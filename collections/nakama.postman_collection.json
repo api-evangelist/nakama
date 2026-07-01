@@ -1,0 +1,723 @@
+{
+  "item": [
+    {
+      "id": "a1b2c3d4-0001-4000-8000-000000000001",
+      "name": "Authentication",
+      "description": {
+        "content": "Authenticate users and issue or refresh session tokens. Guarded by the server key using HTTP Basic auth (server key as username, empty password).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a1b2c3d4-0001-4000-8000-000000000002",
+          "name": "Authenticate a user with a device id against the server.",
+          "request": {
+            "name": "Authenticate a user with a device id against the server.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "account",
+                "authenticate",
+                "device"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "create",
+                  "value": "true",
+                  "disabled": true
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{serverKey}}"
+                },
+                {
+                  "key": "password",
+                  "value": ""
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<device-id>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a1b2c3d4-0001-4000-8000-000000000003",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "account",
+                    "authenticate",
+                    "device"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"018d7f1e-8b9a-7c2d-9f10-abc123def456\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created\": true,\n  \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...\",\n  \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a1b2c3d4-0001-4000-8000-000000000004",
+          "name": "Authenticate a user with an email and password against the server.",
+          "request": {
+            "name": "Authenticate a user with an email and password against the server.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "account",
+                "authenticate",
+                "email"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{serverKey}}"
+                },
+                {
+                  "key": "password",
+                  "value": ""
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@example.com\",\n  \"password\": \"password123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a1b2c3d4-0001-4000-8000-000000000005",
+          "name": "Refresh a user's session using a refresh token.",
+          "request": {
+            "name": "Refresh a user's session using a refresh token.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "account",
+                "session",
+                "refresh"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{serverKey}}"
+                },
+                {
+                  "key": "password",
+                  "value": ""
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"<refresh-token>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "a1b2c3d4-0002-4000-8000-000000000001",
+      "name": "Account",
+      "description": {
+        "content": "Read, update, and delete the current account and fetch users. Authorized with the Bearer session token.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a1b2c3d4-0002-4000-8000-000000000002",
+          "name": "Fetch the current user's account.",
+          "request": {
+            "name": "Fetch the current user's account.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "account"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a1b2c3d4-0002-4000-8000-000000000003",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "account"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET"
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user\": {\n    \"id\": \"018d7f1e-8b9a-7c2d-9f10-abc123def456\",\n    \"username\": \"player1\",\n    \"display_name\": \"Player One\"\n  },\n  \"wallet\": \"{}\",\n  \"email\": \"user@example.com\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a1b2c3d4-0002-4000-8000-000000000004",
+          "name": "Update fields in the current user's account.",
+          "request": {
+            "name": "Update fields in the current user's account.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "account"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"display_name\": \"New Name\",\n  \"avatar_url\": \"https://example.com/avatar.png\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a1b2c3d4-0002-4000-8000-000000000005",
+          "name": "Fetch zero or more users by id, username, and/or Facebook id.",
+          "request": {
+            "name": "Fetch zero or more users by id, username, and/or Facebook id.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "user"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "ids",
+                  "value": "",
+                  "description": "The account ids of the users."
+                }
+              ],
+              "variable": []
+            },
+            "header": [],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "a1b2c3d4-0003-4000-8000-000000000001",
+      "name": "Storage",
+      "description": {
+        "content": "Read, write, list, and delete storage objects. Authorized with the Bearer session token.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a1b2c3d4-0003-4000-8000-000000000002",
+          "name": "Write objects into the storage engine.",
+          "request": {
+            "name": "Write objects into the storage engine.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "storage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"objects\": [\n    {\n      \"collection\": \"saves\",\n      \"key\": \"savegame\",\n      \"value\": \"{\\\"level\\\":5}\",\n      \"permission_read\": 1,\n      \"permission_write\": 1\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a1b2c3d4-0003-4000-8000-000000000003",
+          "name": "Get objects from the storage engine.",
+          "request": {
+            "name": "Get objects from the storage engine.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "storage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"object_ids\": [\n    {\n      \"collection\": \"saves\",\n      \"key\": \"savegame\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a1b2c3d4-0003-4000-8000-000000000004",
+          "name": "List publicly readable storage objects in a given collection.",
+          "request": {
+            "name": "List publicly readable storage objects in a given collection.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "storage",
+                ":collection"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "collection",
+                  "value": "saves",
+                  "description": "The collection to list over."
+                }
+              ]
+            },
+            "header": [],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "a1b2c3d4-0004-4000-8000-000000000001",
+      "name": "Leaderboards",
+      "description": {
+        "content": "Write and list leaderboard records. Authorized with the Bearer session token.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a1b2c3d4-0004-4000-8000-000000000002",
+          "name": "List records from a leaderboard.",
+          "request": {
+            "name": "List records from a leaderboard.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "leaderboard",
+                ":leaderboard_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "leaderboard_id",
+                  "value": "weekly_scores",
+                  "description": "The leaderboard id."
+                }
+              ]
+            },
+            "header": [],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a1b2c3d4-0004-4000-8000-000000000003",
+          "name": "Write a record to a leaderboard.",
+          "request": {
+            "name": "Write a record to a leaderboard.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "leaderboard",
+                ":leaderboard_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "leaderboard_id",
+                  "value": "weekly_scores",
+                  "description": "The leaderboard id."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"score\": \"1000\",\n  \"subscore\": \"0\",\n  \"metadata\": \"{}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "a1b2c3d4-0005-4000-8000-000000000001",
+      "name": "Notifications",
+      "description": {
+        "content": "List and delete in-app notifications. Authorized with the Bearer session token.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a1b2c3d4-0005-4000-8000-000000000002",
+          "name": "Fetch a list of notifications.",
+          "request": {
+            "name": "Fetch a list of notifications.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "notification"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "10",
+                  "description": "The number of notifications to get. Between 1 and 100."
+                }
+              ],
+              "variable": []
+            },
+            "header": [],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "a1b2c3d4-0006-4000-8000-000000000001",
+      "name": "RPC",
+      "description": {
+        "content": "Call custom runtime functions. Authorized with the Bearer session token, or with an http_key query parameter for server-to-server calls.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a1b2c3d4-0006-4000-8000-000000000002",
+          "name": "Execute a Nakama runtime RPC function with a session token.",
+          "request": {
+            "name": "Execute a Nakama runtime RPC function with a session token.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "rpc",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "reward_daily",
+                  "description": "The identifier of the runtime function."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "\"{}\"",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://127.0.0.1:7350",
+      "key": "baseUrl"
+    },
+    {
+      "type": "string",
+      "value": "defaultkey",
+      "key": "serverKey"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{sessionToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a1b2c3d4-0000-4000-8000-000000000000",
+    "name": "Nakama API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Representative Postman collection for the core REST API of Nakama, the open-source game backend server by Heroic Labs. Authentication endpoints use server-key HTTP Basic auth; all other endpoints use the Bearer session token returned by an authenticate call.\n\nContact Support:\n Name: Heroic Labs\n Email: support@heroiclabs.com",
+      "type": "text/plain"
+    }
+  }
+}

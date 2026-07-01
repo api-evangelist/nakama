@@ -1,0 +1,404 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nakama API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{sessionToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Authenticate a user with a device id against the server.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://127.0.0.1:7350/v2/account/authenticate/device",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"id\": \"<device-id>\"\n}"
+            }
+          },
+          "docs": "Authenticate a user with a device id. Guarded by the server key using HTTP Basic auth (server key as username, empty password)."
+        },
+        {
+          "info": {
+            "name": "Authenticate a user with an email and password against the server.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://127.0.0.1:7350/v2/account/authenticate/email",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"email\": \"user@example.com\",\n  \"password\": \"password123\"\n}"
+            }
+          },
+          "docs": "Authenticate a user with an email and password. Uses server-key HTTP Basic auth."
+        },
+        {
+          "info": {
+            "name": "Refresh a user's session using a refresh token.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://127.0.0.1:7350/v2/account/session/refresh",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"token\": \"<refresh-token>\"\n}"
+            }
+          },
+          "docs": "Refresh a user's session using a refresh token retrieved from a previous authentication request."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Account",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch the current user's account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://127.0.0.1:7350/v2/account"
+          },
+          "docs": "Fetch the current user's account."
+        },
+        {
+          "info": {
+            "name": "Update fields in the current user's account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://127.0.0.1:7350/v2/account",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"display_name\": \"<string>\"\n}"
+            }
+          },
+          "docs": "Update fields in the current user's account."
+        },
+        {
+          "info": {
+            "name": "Fetch zero or more users by id, username, and/or Facebook id.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://127.0.0.1:7350/v2/user",
+            "params": [
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "The account ids of the users."
+              }
+            ]
+          },
+          "docs": "Fetch zero or more users by id, username, and/or Facebook id."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Friends",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all friends for the current user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://127.0.0.1:7350/v2/friend"
+          },
+          "docs": "List all friends for the current user."
+        },
+        {
+          "info": {
+            "name": "Add friends by ids or usernames.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://127.0.0.1:7350/v2/friend",
+            "params": [
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "The account ids of the users to add as friends."
+              }
+            ]
+          },
+          "docs": "Add friends by ids or usernames."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a new group with the current user as the owner.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://127.0.0.1:7350/v2/group",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"name\": \"<string>\",\n  \"open\": true\n}"
+            }
+          },
+          "docs": "Create a new group with the current user as the owner."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Storage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Write objects into the storage engine.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://127.0.0.1:7350/v2/storage",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"objects\": [\n    {\n      \"collection\": \"saves\",\n      \"key\": \"savegame\",\n      \"value\": \"{}\"\n    }\n  ]\n}"
+            }
+          },
+          "docs": "Write objects into the storage engine."
+        },
+        {
+          "info": {
+            "name": "Get objects from the storage engine.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://127.0.0.1:7350/v2/storage",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"object_ids\": [\n    {\n      \"collection\": \"saves\",\n      \"key\": \"savegame\"\n    }\n  ]\n}"
+            }
+          },
+          "docs": "Get objects from the storage engine."
+        },
+        {
+          "info": {
+            "name": "List publicly readable storage objects in a given collection.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://127.0.0.1:7350/v2/storage/:collection",
+            "params": [
+              {
+                "name": "collection",
+                "value": "saves",
+                "type": "path",
+                "description": "The collection to list over."
+              }
+            ]
+          },
+          "docs": "List publicly readable storage objects in a given collection."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Leaderboards",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List records from a leaderboard.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://127.0.0.1:7350/v2/leaderboard/:leaderboard_id",
+            "params": [
+              {
+                "name": "leaderboard_id",
+                "value": "",
+                "type": "path",
+                "description": "The leaderboard id."
+              }
+            ]
+          },
+          "docs": "List records from a leaderboard."
+        },
+        {
+          "info": {
+            "name": "Write a record to a leaderboard.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://127.0.0.1:7350/v2/leaderboard/:leaderboard_id",
+            "params": [
+              {
+                "name": "leaderboard_id",
+                "value": "",
+                "type": "path",
+                "description": "The leaderboard id."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{\n  \"score\": \"100\"\n}"
+            }
+          },
+          "docs": "Write a record to a leaderboard."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tournaments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List current or upcoming tournaments.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://127.0.0.1:7350/v2/tournament"
+          },
+          "docs": "List current or upcoming tournaments."
+        },
+        {
+          "info": {
+            "name": "Attempt to join an open and running tournament.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://127.0.0.1:7350/v2/tournament/:tournament_id/join",
+            "params": [
+              {
+                "name": "tournament_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Attempt to join an open and running tournament."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Notifications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch a list of notifications.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://127.0.0.1:7350/v2/notification",
+            "params": [
+              {
+                "name": "limit",
+                "value": "10",
+                "type": "query",
+                "description": "The number of notifications to get. Between 1 and 100."
+              }
+            ]
+          },
+          "docs": "Fetch a list of notifications."
+        },
+        {
+          "info": {
+            "name": "Delete one or more notifications for the current user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://127.0.0.1:7350/v2/notification",
+            "params": [
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "The id of notifications to delete."
+              }
+            ]
+          },
+          "docs": "Delete one or more notifications for the current user."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "RPC",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Execute a Nakama runtime RPC function with a session token.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://127.0.0.1:7350/v2/rpc/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the runtime function."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "\"{}\""
+            }
+          },
+          "docs": "Execute a Nakama runtime RPC function registered in the server framework."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

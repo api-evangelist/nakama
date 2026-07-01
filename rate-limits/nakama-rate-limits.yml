@@ -1,0 +1,74 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Nakama
+providerId: nakama
+created: '2026-07-01'
+modified: '2026-07-01'
+reconciled: false
+tags:
+- Gaming
+- Game Backend
+- Realtime
+- Open Source
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  Nakama does not ship a fixed, published per-endpoint rate-limit table the way
+  a typical hosted SaaS API does. Because the server is open source and
+  self-hosted, throughput is bounded by the operator's own compute and database
+  capacity and by server configuration. Nakama's runtime provides mechanisms an
+  operator uses to bound and shape load - for example configurable maximum
+  message sizes and per-connection limits on the realtime socket, session and
+  token lifetimes, and the ability to enforce custom rate limits inside runtime
+  (Go / TypeScript / Lua) RPC and before/after hooks. On Heroic Cloud, effective
+  limits are governed by the provisioned tier (node count, database capacity, and
+  concurrent-user allowance) rather than by a per-key request quota.
+notes: >-
+  Values are operator- and tier-dependent and are not reconciled here. For
+  self-hosting, review the server configuration reference and apply custom
+  limits in runtime hooks. For Heroic Cloud, confirm the concurrent-user and
+  throughput characteristics of your tier with Heroic Labs.
+sources:
+- https://heroiclabs.com/docs/nakama/getting-started/configuration/
+- https://heroiclabs.com/docs/nakama/server-framework/introduction/
+- https://heroiclabs.com/heroic-cloud/
+responseCodes:
+  throttled: 429
+limits:
+- name: Realtime Socket Message Size
+  scope: connection
+  metric: bytes
+  limit: operator-configured (max_message_size_bytes)
+  notes: Maximum inbound WebSocket message size, set in the socket configuration.
+- name: Realtime Socket Ping/Pong and Idle Timeout
+  scope: connection
+  metric: seconds
+  limit: operator-configured (ping_period_ms / pong_wait_ms / idle_timeout_ms)
+  notes: Idle and heartbeat timeouts close inactive realtime connections.
+- name: Concurrent Connections
+  scope: server
+  metric: connections
+  limit: bounded by infrastructure / Heroic Cloud tier
+  notes: Concurrent-user capacity depends on provisioned nodes and database.
+- name: Custom RPC / Hook Rate Limits
+  scope: account
+  metric: requests
+  limit: operator-defined in runtime code
+  notes: Operators enforce per-user or per-endpoint limits inside runtime functions and before/after hooks.
+- name: Session and Token Lifetime
+  scope: account
+  metric: seconds
+  limit: operator-configured (token_expiry_sec / refresh_token_expiry_sec)
+  notes: Bounds how long a session token and refresh token remain valid.
+policies:
+- name: Operator-Controlled
+  description: Because Nakama is self-hostable, most limits are configuration- or code-driven rather than fixed by the vendor.
+- name: Tier-Governed on Heroic Cloud
+  description: Managed capacity (nodes, database, concurrent users) sets the effective ceiling on Heroic Cloud.
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter and honor server-side error responses (including 429).
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

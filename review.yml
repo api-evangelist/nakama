@@ -1,0 +1,98 @@
+aid: nakama
+name: Nakama
+review:
+  question: Does Nakama expose a documented public WebSocket API?
+  answer: true
+  date: '2026-07-01'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: true
+  asyncapiScopeNote: |
+    Nakama publishes a genuine, documented, bidirectional WebSocket realtime
+    API in addition to its gRPC-gateway REST API. An AsyncAPI 2.6 document was
+    authored at asyncapi/nakama-asyncapi.yml describing the realtime socket
+    (`GET /ws` upgraded to WebSocket, envelope messages in both directions).
+    This is a true WebSocket surface - not HTTP Server-Sent Events - so the
+    AsyncAPI models it as a `ws` protocol server with publish (client-to-server)
+    and subscribe (server-to-client) operations over the single `/ws` channel.
+findings:
+  summary: |
+    Nakama exposes two distinct transports. The primary REST API is generated
+    by the gRPC-gateway from `api/api.proto` and served under `/v2` on the
+    default port 7350 (covering authentication, accounts, friends, groups,
+    storage, leaderboards, tournaments, notifications, and RPC). Separately,
+    Nakama provides a persistent WebSocket socket at `/ws` for realtime
+    features - status presence, realtime chat channels, relayed and
+    authoritative multiplayer matches, matchmaking, parties, and realtime
+    notification delivery - exchanged as `Envelope` messages defined in
+    `realtime/realtime.proto`. The socket is authenticated with the JWT
+    session token passed as the `token` query parameter on connect, with an
+    optional `format` (json or protobuf) parameter. Nakama is open source
+    (Apache-2.0) and self-hostable; Heroic Cloud is the managed hosting
+    offering from Heroic Labs.
+  transports:
+    - protocol: REST
+      scheme: http
+      baseURL: http://127.0.0.1:7350/v2
+      documented: true
+      note: gRPC-gateway-generated HTTP API. Authentication endpoints use server-key HTTP Basic; other endpoints use a Bearer session token.
+    - protocol: gRPC
+      scheme: h2c
+      documented: true
+      note: The underlying service is gRPC; the public REST surface is the gateway transcoding of that service.
+    - protocol: WebSocket
+      scheme: ws
+      baseURL: ws://127.0.0.1:7350/ws
+      documented: true
+      note: Genuine bidirectional realtime socket carrying Envelope messages. Authenticated via the token query parameter.
+  endpointsConfirmedRest:
+    - POST http://127.0.0.1:7350/v2/account/authenticate/device
+    - POST http://127.0.0.1:7350/v2/account/authenticate/email
+    - POST http://127.0.0.1:7350/v2/account/authenticate/custom
+    - POST http://127.0.0.1:7350/v2/account/session/refresh
+    - GET  http://127.0.0.1:7350/v2/account
+    - PUT  http://127.0.0.1:7350/v2/account
+    - DELETE http://127.0.0.1:7350/v2/account
+    - GET  http://127.0.0.1:7350/v2/user
+    - GET  http://127.0.0.1:7350/v2/friend
+    - POST http://127.0.0.1:7350/v2/friend
+    - DELETE http://127.0.0.1:7350/v2/friend
+    - POST http://127.0.0.1:7350/v2/group
+    - PUT  http://127.0.0.1:7350/v2/storage
+    - POST http://127.0.0.1:7350/v2/storage
+    - PUT  http://127.0.0.1:7350/v2/storage/delete
+    - GET  http://127.0.0.1:7350/v2/leaderboard/{leaderboard_id}
+    - POST http://127.0.0.1:7350/v2/leaderboard/{leaderboard_id}
+    - GET  http://127.0.0.1:7350/v2/tournament
+    - POST http://127.0.0.1:7350/v2/tournament/{tournament_id}/join
+    - GET  http://127.0.0.1:7350/v2/notification
+    - DELETE http://127.0.0.1:7350/v2/notification
+    - POST http://127.0.0.1:7350/v2/rpc/{id}
+    - GET  http://127.0.0.1:7350/v2/rpc/{id}
+  websocketConfirmed:
+    - GET ws://127.0.0.1:7350/ws (Upgrade to WebSocket; ?token=<session_token>&format=json)
+sources:
+  - url: https://heroiclabs.com/docs/nakama/
+    type: Documentation
+    note: Nakama documentation overview covering REST and realtime.
+  - url: https://heroiclabs.com/docs/nakama/api/
+    type: APIReference
+    note: REST API reference generated from the gRPC-gateway swagger.
+  - url: https://heroiclabs.com/docs/nakama/concepts/client-relayed-multiplayer/
+    type: Documentation
+    note: Realtime multiplayer over the WebSocket socket.
+  - url: https://github.com/heroiclabs/nakama
+    type: SourceCode
+    note: Open-source (Apache-2.0) server; api/api.proto (REST) and realtime/realtime.proto (socket Envelope).
+actions:
+  asyncapiPath: asyncapi/nakama-asyncapi.yml
+  openapiPath: openapi/nakama-openapi.yml
+  apisYmlUpdated: true
+  reason: |
+    A genuine WebSocket protocol surface exists and is documented, so an
+    AsyncAPI 2.6 document was authored for the realtime socket and referenced
+    from the Nakama Realtime Socket API entry in apis.yml. The REST surface is
+    modeled in a companion OpenAPI 3.0 document referenced from the other API
+    entries.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,130 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Nakama
+providerId: nakama
+created: '2026-07-01'
+modified: '2026-07-01'
+reconciled: false
+tags:
+- Gaming
+- Game Backend
+- Realtime
+- Open Source
+- Plans
+description: >-
+  Nakama itself is free and open source under the Apache-2.0 license and can be
+  self-hosted at no license cost (you pay only for your own infrastructure and
+  database). Heroic Labs monetizes through Heroic Cloud, the managed hosting and
+  operations platform for Nakama (and Hiro / Satori), plus enterprise support and
+  services. Heroic Cloud is sold as tiered subscriptions that bundle managed
+  Nakama nodes, database capacity, concurrent-user allowances, and support, with
+  usage-based scaling above the included allotments. Public list pricing changes
+  frequently; the entries below are representative categories, and specific dollar
+  amounts must be confirmed on the Heroic Labs pricing page.
+notes: >-
+  Amounts are not fully reconciled. Confirm current tiers, included resources,
+  and overage rates on https://heroiclabs.com/pricing and in a Heroic Cloud
+  quote. Self-hosting has no software license fee.
+sources:
+- https://heroiclabs.com/pricing/
+- https://heroiclabs.com/heroic-cloud/
+- https://github.com/heroiclabs/nakama
+plans:
+- id: nakama-open-source
+  name: Open Source (Self-Hosted)
+  type: free
+  description: >-
+    The full Nakama server under Apache-2.0, self-hosted on your own
+    infrastructure. No license fee and no feature gating; you operate the
+    server and PostgreSQL/CockroachDB database yourself.
+  entries:
+  - label: Nakama Server License
+    name: oss_license
+    type: flat
+    metric: license
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $0 (Apache-2.0, self-hosted infrastructure costs apply)
+    userMultiplied: false
+  elements:
+  - name: Authentication
+  - name: Accounts and Social
+  - name: Storage
+  - name: Realtime Multiplayer and Matchmaking
+  - name: Leaderboards and Tournaments
+  - name: Notifications
+  - name: Runtime and RPC
+- id: nakama-heroic-cloud
+  name: Heroic Cloud (Managed)
+  type: subscription
+  description: >-
+    Managed Nakama hosting operated by Heroic Labs, sold as tiered monthly
+    subscriptions that bundle Nakama compute nodes, managed database capacity,
+    a concurrent-user (CCU) allowance, and support, with scaling above the
+    included allotments.
+  entries:
+  - label: Managed Nakama Node(s)
+    name: managed_nodes
+    type: subscription
+    metric: nodes
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: see Heroic Labs pricing page
+    userMultiplied: false
+  - label: Managed Database Capacity
+    name: managed_database
+    type: subscription
+    metric: storage
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included per tier, with paid expansion
+    userMultiplied: false
+  - label: Concurrent Users (CCU)
+    name: ccu_allowance
+    type: usage
+    metric: concurrent_users
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: allowance per tier, overage scales with plan
+    userMultiplied: false
+  elements:
+  - name: Managed Nakama
+  - name: Managed Hiro
+  - name: Managed Satori
+  - name: Automated Backups and Upgrades
+  - name: Standard Support
+- id: nakama-enterprise
+  name: Enterprise
+  type: enterprise
+  description: >-
+    Custom Heroic Cloud deployments, dedicated infrastructure, SLAs, priority
+    and dedicated support, professional services, and negotiated terms for
+    large-scale titles. Contact Heroic Labs sales.
+  entries:
+  - label: Enterprise Agreement
+    name: enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Dedicated Infrastructure
+  - name: Custom SLA
+  - name: Priority and Dedicated Support
+  - name: Professional Services
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

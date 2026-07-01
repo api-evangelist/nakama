@@ -1,0 +1,221 @@
+aid: nakama
+url: https://raw.githubusercontent.com/api-evangelist/nakama/refs/heads/main/apis.yml
+name: Nakama
+kind: company
+description: Nakama by Heroic Labs is an open-source (Apache-2.0) game and app backend
+  server providing user accounts and authentication, social features (friends,
+  groups, chat), collaborative storage, realtime multiplayer and authoritative
+  matches, matchmaking, leaderboards and tournaments, notifications, and a server
+  runtime with custom RPCs in Go, TypeScript/JavaScript, and Lua. Nakama exposes a
+  gRPC-gateway-generated REST API plus a realtime WebSocket socket API, and is
+  available self-hosted or as the managed Heroic Cloud.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Gaming
+- Game Backend
+- Backend
+- Realtime
+- Multiplayer
+- Matchmaking
+- Leaderboards
+- Social
+- Open Source
+created: '2026-07-01'
+modified: '2026-07-01'
+specificationVersion: '0.19'
+apis:
+- aid: nakama:nakama-authentication-api
+  name: Nakama Authentication API
+  tags:
+  - Authentication
+  - Accounts
+  - Sessions
+  - OAuth
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://heroiclabs.com/docs/nakama/concepts/authentication/
+  baseURL: http://127.0.0.1:7350/v2
+  properties:
+  - url: https://heroiclabs.com/docs/nakama/concepts/authentication/
+    type: Documentation
+  - url: https://heroiclabs.com/docs/nakama/api/
+    type: APIReference
+  - url: openapi/nakama-openapi.yml
+    type: OpenAPI
+  description: Authenticates players and issues session tokens. Supports device ID,
+    email/password, username, custom ID, Apple, Google, Facebook, Facebook Instant
+    Games, Game Center, Steam, and refresh-token flows. Server key HTTP Basic auth
+    guards authentication endpoints; a JWT session token authorizes all other calls.
+- aid: nakama:nakama-account-api
+  name: Nakama Account API
+  tags:
+  - Accounts
+  - Users
+  - Profile
+  - Linking
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://heroiclabs.com/docs/nakama/concepts/user-accounts/
+  baseURL: http://127.0.0.1:7350/v2
+  properties:
+  - url: https://heroiclabs.com/docs/nakama/concepts/user-accounts/
+    type: Documentation
+  - url: openapi/nakama-openapi.yml
+    type: OpenAPI
+  description: Reads and updates the authenticated user's account, fetches other user
+    profiles, deletes the account, and links or unlinks external identity providers
+    (device, email, Apple, Google, Facebook, Game Center, Steam, custom) to a single
+    account.
+- aid: nakama:nakama-social-api
+  name: Nakama Friends and Groups API
+  tags:
+  - Social
+  - Friends
+  - Groups
+  - Clans
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://heroiclabs.com/docs/nakama/concepts/friends/
+  baseURL: http://127.0.0.1:7350/v2
+  properties:
+  - url: https://heroiclabs.com/docs/nakama/concepts/friends/
+    type: Documentation
+  - url: https://heroiclabs.com/docs/nakama/concepts/groups-clans/
+    type: Documentation
+  - url: openapi/nakama-openapi.yml
+    type: OpenAPI
+  description: Manages the social graph - add, list, delete, and block friends;
+    import friends from Facebook and Steam; create, update, list, join, and leave
+    groups (clans); manage group membership, promotions, demotions, and bans.
+- aid: nakama:nakama-storage-api
+  name: Nakama Storage API
+  tags:
+  - Storage
+  - Objects
+  - Save Games
+  - Persistence
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://heroiclabs.com/docs/nakama/concepts/collections/
+  baseURL: http://127.0.0.1:7350/v2
+  properties:
+  - url: https://heroiclabs.com/docs/nakama/concepts/collections/
+    type: Documentation
+  - url: openapi/nakama-openapi.yml
+    type: OpenAPI
+  description: Reads, writes, lists, and deletes JSON storage objects organized into
+    collections and keyed per user, with per-object owner and public read/write
+    permissions and optimistic-concurrency version checks. Backs save games,
+    inventories, and shared app state.
+- aid: nakama:nakama-leaderboards-tournaments-api
+  name: Nakama Leaderboards and Tournaments API
+  tags:
+  - Leaderboards
+  - Tournaments
+  - Scores
+  - Ranking
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://heroiclabs.com/docs/nakama/concepts/leaderboards/
+  baseURL: http://127.0.0.1:7350/v2
+  properties:
+  - url: https://heroiclabs.com/docs/nakama/concepts/leaderboards/
+    type: Documentation
+  - url: https://heroiclabs.com/docs/nakama/concepts/tournaments/
+    type: Documentation
+  - url: openapi/nakama-openapi.yml
+    type: OpenAPI
+  description: Writes and lists leaderboard records (including records around an owner
+    or filtered to friends), and lists, joins, and submits scores to recurring or
+    one-off tournaments with configurable reset schedules, categories, and reward
+    handling.
+- aid: nakama:nakama-notifications-api
+  name: Nakama Notifications API
+  tags:
+  - Notifications
+  - Messaging
+  - Push
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://heroiclabs.com/docs/nakama/concepts/in-app-notifications/
+  baseURL: http://127.0.0.1:7350/v2
+  properties:
+  - url: https://heroiclabs.com/docs/nakama/concepts/in-app-notifications/
+    type: Documentation
+  - url: openapi/nakama-openapi.yml
+    type: OpenAPI
+  description: Lists and deletes a user's in-app notifications with cursor-based
+    pagination. Notifications are delivered in realtime over the socket when the
+    user is connected, and persisted for retrieval when they reconnect.
+- aid: nakama:nakama-rpc-runtime-api
+  name: Nakama RPC and Runtime API
+  tags:
+  - RPC
+  - Runtime
+  - Custom Logic
+  - Serverless
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://heroiclabs.com/docs/nakama/server-framework/basics/
+  baseURL: http://127.0.0.1:7350/v2
+  properties:
+  - url: https://heroiclabs.com/docs/nakama/server-framework/basics/
+    type: Documentation
+  - url: https://heroiclabs.com/docs/nakama/server-framework/introduction/
+    type: Documentation
+  - url: openapi/nakama-openapi.yml
+    type: OpenAPI
+  description: Invokes custom server-side functions (RPCs) registered in the Nakama
+    runtime over HTTP GET or POST, callable with a session token or, for server-to-server
+    calls, an HTTP key query parameter. Runtime functions are authored in Go,
+    TypeScript/JavaScript, or Lua.
+- aid: nakama:nakama-realtime-api
+  name: Nakama Realtime Socket API
+  tags:
+  - Realtime
+  - WebSocket
+  - Multiplayer
+  - Matchmaking
+  - Chat
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://heroiclabs.com/docs/nakama/concepts/client-relayed-multiplayer/
+  baseURL: ws://127.0.0.1:7350/ws
+  properties:
+  - url: https://heroiclabs.com/docs/nakama/concepts/client-relayed-multiplayer/
+    type: Documentation
+  - url: https://heroiclabs.com/docs/nakama/concepts/matches/
+    type: Documentation
+  - url: asyncapi/nakama-asyncapi.yml
+    type: AsyncAPI
+  description: Persistent WebSocket connection carrying realtime features - status
+    presence, realtime chat channels, relayed and authoritative multiplayer matches,
+    matchmaking, parties, and realtime notification delivery - as envelope messages
+    authenticated with a session token supplied as a query parameter on connect.
+- aid: nakama:nakama-console-api
+  name: Nakama Console API
+  tags:
+  - Console
+  - Administration
+  - Operations
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://heroiclabs.com/docs/nakama/getting-started/console-overview/
+  baseURL: http://127.0.0.1:7350/v2/console
+  properties:
+  - url: https://heroiclabs.com/docs/nakama/getting-started/console-overview/
+    type: Documentation
+  description: Administrative API behind the Nakama Developer Console for managing
+    users, storage, leaderboards, matches, runtime configuration, and server status.
+    It is an internal operations surface (not published as a stable public client
+    contract) authenticated with console credentials, and is documented here for
+    completeness rather than for third-party client integration.
+common:
+- type: GitHubOrganization
+  url: https://github.com/heroiclabs
+- type: LinkedIn
+  url: https://www.linkedin.com/company/heroic-labs
+- type: Website
+  url: https://heroiclabs.com/
+- type: Documentation
+  url: https://heroiclabs.com/docs/
+- type: Plans
+  url: plans/nakama-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/nakama-rate-limits.yml
+- type: FinOps
+  url: finops/nakama-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

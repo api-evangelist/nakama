@@ -1,0 +1,587 @@
+asyncapi: '2.6.0'
+id: 'urn:com:heroiclabs:nakama:realtime:socket'
+info:
+  title: Nakama Realtime Socket API (WebSocket)
+  version: '1.0.0'
+  description: |
+    AsyncAPI 2.6 description of Nakama's **realtime socket API**.
+
+    Unlike the request/response REST surface (modeled in
+    `openapi/nakama-openapi.yml`), Nakama exposes a genuine bidirectional
+    **WebSocket** transport for realtime features: status presence, realtime
+    chat channels, relayed and authoritative multiplayer matches, matchmaking,
+    parties, and realtime notification delivery.
+
+    The client opens the socket at `GET /ws` (upgraded to WebSocket), passing
+    the JWT session token from an authenticate call as the `token` query
+    parameter, an optional `format` query parameter (`json` or `protobuf`), and
+    an optional `lang` parameter. Once connected, both sides exchange
+    **envelope** messages. A client envelope that includes a `cid` (correlation
+    id) receives a matching server envelope carrying the same `cid`; server-
+    initiated messages (such as `match_data`, `channel_message`,
+    `notifications`, `status_presence_event`, and `matchmaker_matched`) arrive
+    without a `cid`.
+
+    This document models a representative subset of the envelope message types.
+    The authoritative set is defined by `realtime/realtime.proto` (the
+    `Envelope` message) in the heroiclabs/nakama repository.
+  contact:
+    name: API Evangelist
+    email: kin@apievangelist.com
+    url: https://apievangelist.com
+  license:
+    name: Apache 2.0
+    url: https://github.com/heroiclabs/nakama/blob/master/LICENSE
+  x-transport-notes:
+    transport: WebSocket
+    protocol: ws / wss
+    direction: bidirectional
+    path: /ws
+    upgrade: 'GET /ws with Connection: Upgrade, Upgrade: websocket'
+    auth: 'JWT session token passed as the ?token= query parameter on connect'
+    format: 'json (default) or protobuf, selected with the ?format= query parameter'
+    correlation: 'client requests set cid; the matching server reply echoes the same cid'
+    source: https://heroiclabs.com/docs/nakama/concepts/client-relayed-multiplayer/
+defaultContentType: application/json
+servers:
+  nakama:
+    url: 127.0.0.1:7350
+    protocol: ws
+    description: |
+      Default self-hosted Nakama socket endpoint. Connect to `/ws` and upgrade
+      to WebSocket. Use `wss` against a TLS-terminated Heroic Cloud project URL
+      in production.
+    security:
+      - sessionToken: []
+    variables: {}
+    bindings:
+      ws:
+        bindingVersion: '0.1.0'
+channels:
+  /ws:
+    description: |
+      The single Nakama realtime WebSocket channel. All realtime traffic flows
+      as `Envelope` messages in both directions over this one connection. The
+      `publish` operation below covers envelopes the client sends to the server;
+      the `subscribe` operation covers envelopes the server sends to the client.
+    bindings:
+      ws:
+        bindingVersion: '0.1.0'
+        method: GET
+        query:
+          type: object
+          properties:
+            token:
+              type: string
+              description: The JWT session token from an authenticate call.
+            format:
+              type: string
+              enum:
+                - json
+                - protobuf
+              default: json
+            lang:
+              type: string
+              default: en
+    publish:
+      operationId: sendEnvelope
+      summary: Client-to-server realtime messages.
+      description: |
+        Envelopes sent by the client. Set a unique `cid` to correlate the
+        server's reply. Examples include joining a chat channel, creating or
+        joining a match, sending match data, updating status, and adding to
+        the matchmaker.
+      message:
+        oneOf:
+          - $ref: '#/components/messages/ChannelJoin'
+          - $ref: '#/components/messages/ChannelMessageSend'
+          - $ref: '#/components/messages/MatchCreate'
+          - $ref: '#/components/messages/MatchJoin'
+          - $ref: '#/components/messages/MatchDataSend'
+          - $ref: '#/components/messages/MatchmakerAdd'
+          - $ref: '#/components/messages/StatusUpdate'
+    subscribe:
+      operationId: receiveEnvelope
+      summary: Server-to-client realtime messages.
+      description: |
+        Envelopes emitted by the server. Replies to client requests carry the
+        originating `cid`; server-initiated events (match data, chat messages,
+        matchmaker results, presence events, notifications) arrive without a
+        `cid`.
+      message:
+        oneOf:
+          - $ref: '#/components/messages/Channel'
+          - $ref: '#/components/messages/ChannelMessage'
+          - $ref: '#/components/messages/Match'
+          - $ref: '#/components/messages/MatchData'
+          - $ref: '#/components/messages/MatchmakerMatched'
+          - $ref: '#/components/messages/StatusPresenceEvent'
+          - $ref: '#/components/messages/Notifications'
+          - $ref: '#/components/messages/Error'
+components:
+  securitySchemes:
+    sessionToken:
+      type: httpApiKey
+      in: query
+      name: token
+      description: |
+        The JWT session token returned by a Nakama authenticate call, supplied
+        as the `token` query parameter when the WebSocket connection is opened.
+  messages:
+    ChannelJoin:
+      name: ChannelJoin
+      title: Join a realtime chat channel
+      summary: Client request to join a chat channel (room, direct message, or group).
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/EnvelopeChannelJoin'
+      examples:
+        - name: joinRoom
+          payload:
+            cid: '1'
+            channel_join:
+              target: global-room
+              type: 1
+              persistence: true
+              hidden: false
+    ChannelMessageSend:
+      name: ChannelMessageSend
+      title: Send a chat message
+      summary: Client request to send a message to a joined channel.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/EnvelopeChannelMessageSend'
+      examples:
+        - name: sendHello
+          payload:
+            cid: '2'
+            channel_message_send:
+              channel_id: 'channel-id-123'
+              content: '{"text":"Hello world"}'
+    MatchCreate:
+      name: MatchCreate
+      title: Create a relayed match
+      summary: Client request to create a new client-relayed multiplayer match.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/EnvelopeMatchCreate'
+      examples:
+        - name: create
+          payload:
+            cid: '3'
+            match_create: {}
+    MatchJoin:
+      name: MatchJoin
+      title: Join a match
+      summary: Client request to join a match by id or by matchmaker token.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/EnvelopeMatchJoin'
+      examples:
+        - name: joinById
+          payload:
+            cid: '4'
+            match_join:
+              match_id: 'match-id-abc'
+    MatchDataSend:
+      name: MatchDataSend
+      title: Send match data
+      summary: Client sends an opcode-tagged data frame to all or some match participants.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/EnvelopeMatchDataSend'
+      examples:
+        - name: move
+          payload:
+            match_data_send:
+              match_id: 'match-id-abc'
+              op_code: '1'
+              data: 'eyJ4IjoxMCwieSI6MjB9'
+    MatchmakerAdd:
+      name: MatchmakerAdd
+      title: Add to the matchmaker
+      summary: Client request to enter the matchmaking pool with a query and constraints.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/EnvelopeMatchmakerAdd'
+      examples:
+        - name: findGame
+          payload:
+            cid: '5'
+            matchmaker_add:
+              query: '*'
+              min_count: 2
+              max_count: 4
+    StatusUpdate:
+      name: StatusUpdate
+      title: Update status
+      summary: Client updates its presence status string.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/EnvelopeStatusUpdate'
+      examples:
+        - name: online
+          payload:
+            status_update:
+              status: '{"status":"online"}'
+    Channel:
+      name: Channel
+      title: Channel joined
+      summary: Server reply describing a joined chat channel.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/EnvelopeChannel'
+    ChannelMessage:
+      name: ChannelMessage
+      title: Incoming chat message
+      summary: Server-initiated delivery of a message on a joined channel.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/EnvelopeChannelMessage'
+    Match:
+      name: Match
+      title: Match state
+      summary: Server reply describing a created or joined match, including presences.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/EnvelopeMatch'
+    MatchData:
+      name: MatchData
+      title: Incoming match data
+      summary: Server-initiated delivery of an opcode-tagged data frame from a match participant.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/EnvelopeMatchData'
+    MatchmakerMatched:
+      name: MatchmakerMatched
+      title: Matchmaker matched
+      summary: Server-initiated notification that a suitable set of opponents was found.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/EnvelopeMatchmakerMatched'
+    StatusPresenceEvent:
+      name: StatusPresenceEvent
+      title: Status presence event
+      summary: Server-initiated event describing users who came online or went offline.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/EnvelopeStatusPresenceEvent'
+    Notifications:
+      name: Notifications
+      title: Realtime notifications
+      summary: Server-initiated delivery of one or more in-app notifications.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/EnvelopeNotifications'
+    Error:
+      name: Error
+      title: Error
+      summary: Server error envelope, echoing the cid of the failed request when applicable.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/EnvelopeError'
+      examples:
+        - name: badRequest
+          payload:
+            cid: '4'
+            error:
+              code: 3
+              message: 'Match not found'
+  schemas:
+    Presence:
+      type: object
+      description: A realtime presence for a user in a match, channel, or status feed.
+      properties:
+        user_id:
+          type: string
+        session_id:
+          type: string
+        username:
+          type: string
+        persistence:
+          type: boolean
+        status:
+          type: string
+    EnvelopeChannelJoin:
+      type: object
+      properties:
+        cid:
+          type: string
+        channel_join:
+          type: object
+          required:
+            - target
+            - type
+          properties:
+            target:
+              type: string
+              description: The name of a room, or the id of a user or a group.
+            type:
+              type: integer
+              format: int32
+              description: '1 room, 2 direct message, 3 group.'
+            persistence:
+              type: boolean
+              description: Whether messages sent on this channel should be stored.
+            hidden:
+              type: boolean
+              description: Whether the user should be hidden from the channel's presence list.
+    EnvelopeChannelMessageSend:
+      type: object
+      properties:
+        cid:
+          type: string
+        channel_message_send:
+          type: object
+          required:
+            - channel_id
+            - content
+          properties:
+            channel_id:
+              type: string
+            content:
+              type: string
+              description: A JSON-encoded message payload.
+    EnvelopeMatchCreate:
+      type: object
+      properties:
+        cid:
+          type: string
+        match_create:
+          type: object
+          properties:
+            name:
+              type: string
+              description: Optional name to create or join a named relayed match.
+    EnvelopeMatchJoin:
+      type: object
+      properties:
+        cid:
+          type: string
+        match_join:
+          type: object
+          properties:
+            match_id:
+              type: string
+            token:
+              type: string
+              description: A matchmaker token to join an authoritative match.
+            metadata:
+              type: object
+              additionalProperties:
+                type: string
+    EnvelopeMatchDataSend:
+      type: object
+      properties:
+        match_data_send:
+          type: object
+          required:
+            - match_id
+            - op_code
+            - data
+          properties:
+            match_id:
+              type: string
+            op_code:
+              type: string
+              format: int64
+              description: Application-defined operation code.
+            data:
+              type: string
+              format: byte
+              description: Base64-encoded data payload.
+            presences:
+              type: array
+              description: Subset of match presences to send to. Empty sends to all.
+              items:
+                $ref: '#/components/schemas/Presence'
+    EnvelopeMatchmakerAdd:
+      type: object
+      properties:
+        cid:
+          type: string
+        matchmaker_add:
+          type: object
+          properties:
+            query:
+              type: string
+            min_count:
+              type: integer
+              format: int32
+            max_count:
+              type: integer
+              format: int32
+            string_properties:
+              type: object
+              additionalProperties:
+                type: string
+            numeric_properties:
+              type: object
+              additionalProperties:
+                type: number
+    EnvelopeStatusUpdate:
+      type: object
+      properties:
+        cid:
+          type: string
+        status_update:
+          type: object
+          properties:
+            status:
+              type: string
+              description: Status string to set. Absent clears status.
+    EnvelopeChannel:
+      type: object
+      properties:
+        cid:
+          type: string
+        channel:
+          type: object
+          properties:
+            id:
+              type: string
+            presences:
+              type: array
+              items:
+                $ref: '#/components/schemas/Presence'
+            self:
+              $ref: '#/components/schemas/Presence'
+            room_name:
+              type: string
+    EnvelopeChannelMessage:
+      type: object
+      properties:
+        channel_message:
+          type: object
+          properties:
+            channel_id:
+              type: string
+            message_id:
+              type: string
+            sender_id:
+              type: string
+            username:
+              type: string
+            content:
+              type: string
+            create_time:
+              type: string
+              format: date-time
+    EnvelopeMatch:
+      type: object
+      properties:
+        cid:
+          type: string
+        match:
+          type: object
+          properties:
+            match_id:
+              type: string
+            authoritative:
+              type: boolean
+            label:
+              type: string
+            size:
+              type: integer
+              format: int32
+            presences:
+              type: array
+              items:
+                $ref: '#/components/schemas/Presence'
+            self:
+              $ref: '#/components/schemas/Presence'
+    EnvelopeMatchData:
+      type: object
+      properties:
+        match_data:
+          type: object
+          properties:
+            match_id:
+              type: string
+            presence:
+              $ref: '#/components/schemas/Presence'
+            op_code:
+              type: string
+              format: int64
+            data:
+              type: string
+              format: byte
+    EnvelopeMatchmakerMatched:
+      type: object
+      properties:
+        matchmaker_matched:
+          type: object
+          properties:
+            ticket:
+              type: string
+            match_id:
+              type: string
+            token:
+              type: string
+              description: Token used to join the resulting authoritative match.
+            users:
+              type: array
+              items:
+                type: object
+                properties:
+                  presence:
+                    $ref: '#/components/schemas/Presence'
+    EnvelopeStatusPresenceEvent:
+      type: object
+      properties:
+        status_presence_event:
+          type: object
+          properties:
+            joins:
+              type: array
+              items:
+                $ref: '#/components/schemas/Presence'
+            leaves:
+              type: array
+              items:
+                $ref: '#/components/schemas/Presence'
+    EnvelopeNotifications:
+      type: object
+      properties:
+        notifications:
+          type: object
+          properties:
+            notifications:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  subject:
+                    type: string
+                  content:
+                    type: string
+                  code:
+                    type: integer
+                    format: int32
+                  sender_id:
+                    type: string
+                  create_time:
+                    type: string
+                    format: date-time
+                  persistent:
+                    type: boolean
+    EnvelopeError:
+      type: object
+      properties:
+        cid:
+          type: string
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              format: int32
+              description: The error code, mirroring gRPC status codes.
+            message:
+              type: string
+            context:
+              type: object
+              additionalProperties:
+                type: string
