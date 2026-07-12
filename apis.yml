@@ -202,6 +202,10 @@ apis:
     contract) authenticated with console credentials, and is documented here for
     completeness rather than for third-party client integration.
 common:
+- type: DomainSecurity
+  url: security/nakama-domain-security.yml
+- type: Authentication
+  url: authentication/nakama-authentication.yml
 - type: GitHubOrganization
   url: https://github.com/heroiclabs
 - type: LinkedIn
@@ -216,6 +220,8 @@ common:
   url: rate-limits/nakama-rate-limits.yml
 - type: FinOps
   url: finops/nakama-finops.yml
+- type: Blog
+  url: https://heroiclabs.com/blog/
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

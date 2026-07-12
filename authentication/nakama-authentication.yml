@@ -1,0 +1,22 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/nakama-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: BasicAuth
+  type: http
+  scheme: basic
+  description: HTTP Basic auth using the server key as the username and an empty password. Guards
+    the authenticate endpoints.
+  sources:
+  - openapi/nakama-openapi.yml
+- name: BearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: 'The JWT session token returned by an authenticate call, sent as `Authorization:
+    Bearer <session_token>`.'
+  sources:
+  - openapi/nakama-openapi.yml
