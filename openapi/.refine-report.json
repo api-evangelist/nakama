@@ -1,0 +1,30 @@
+{
+  "provider": "nakama",
+  "sources": [
+    "nakama-account-api-openapi.yml",
+    "nakama-authentication-api-openapi.yml",
+    "nakama-friends-api-openapi.yml",
+    "nakama-groups-api-openapi.yml",
+    "nakama-leaderboards-api-openapi.yml",
+    "nakama-notifications-api-openapi.yml",
+    "nakama-rpc-api-openapi.yml",
+    "nakama-storage-api-openapi.yml",
+    "nakama-tournaments-api-openapi.yml"
+  ],
+  "outputs": [
+    "nakama-account-api-openapi.yml",
+    "nakama-authentication-api-openapi.yml",
+    "nakama-friends-api-openapi.yml",
+    "nakama-groups-api-openapi.yml",
+    "nakama-leaderboards-api-openapi.yml",
+    "nakama-notifications-api-openapi.yml",
+    "nakama-rpc-api-openapi.yml",
+    "nakama-storage-api-openapi.yml",
+    "nakama-tournaments-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
