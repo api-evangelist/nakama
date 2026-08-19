@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nakama Account Notifications API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Notifications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch a list of notifications.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://127.0.0.1:7350/v2/notification",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of notifications to get. Between 1 and 100."
+              },
+              {
+                "name": "cacheable_cursor",
+                "value": "",
+                "type": "query",
+                "description": "A cursor to page through notifications, usually cached client-side."
+              }
+            ]
+          },
+          "docs": "Fetch a list of notifications."
+        },
+        {
+          "info": {
+            "name": "Delete one or more notifications for the current user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://127.0.0.1:7350/v2/notification",
+            "params": [
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "The id of notifications to delete."
+              }
+            ]
+          },
+          "docs": "Delete one or more notifications for the current user."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nakama Account Leaderboards API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Leaderboards",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List records from a leaderboard.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://127.0.0.1:7350/v2/leaderboard/:leaderboard_id",
+            "params": [
+              {
+                "name": "leaderboard_id",
+                "value": "",
+                "type": "path",
+                "description": "The leaderboard id."
+              },
+              {
+                "name": "owner_ids",
+                "value": "",
+                "type": "query",
+                "description": "One or more owners to retrieve records for."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List records from a leaderboard."
+        },
+        {
+          "info": {
+            "name": "Write a record to a leaderboard.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://127.0.0.1:7350/v2/leaderboard/:leaderboard_id",
+            "params": [
+              {
+                "name": "leaderboard_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Write a record to a leaderboard."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

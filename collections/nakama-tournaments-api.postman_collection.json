@@ -1,0 +1,243 @@
+{
+  "item": [
+    {
+      "id": "7a14ee3a-3672-47fd-8d6c-a1e9fa3f0581",
+      "name": "Tournaments",
+      "description": {
+        "content": "List, join, and submit to tournaments.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8d70fb57-b765-4aa7-b434-b640a4d6742e",
+          "name": "List current or upcoming tournaments.",
+          "request": {
+            "name": "List current or upcoming tournaments.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "tournament"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "category_start",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "category_end",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eed14ad7-6a4b-430e-ab64-e41c8d4dc93e",
+              "name": "A list of tournaments.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "tournament"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "category_start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "category_end",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tournaments\": [\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"category\": 6132,\n      \"sort_order\": 2887,\n      \"size\": 5439,\n      \"max_size\": 4487,\n      \"max_num_score\": 6586,\n      \"can_enter\": true,\n      \"end_active\": 3603,\n      \"next_reset\": 8530,\n      \"duration\": 7956,\n      \"start_time\": \"1955-08-14T00:14:48.622Z\",\n      \"end_time\": \"2003-08-03T03:57:43.112Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"category\": 9015,\n      \"sort_order\": 965,\n      \"size\": 6067,\n      \"max_size\": 46,\n      \"max_num_score\": 3976,\n      \"can_enter\": false,\n      \"end_active\": 8177,\n      \"next_reset\": 3836,\n      \"duration\": 4161,\n      \"start_time\": \"2008-12-24T01:25:38.786Z\",\n      \"end_time\": \"1993-04-10T05:48:36.539Z\"\n    }\n  ],\n  \"cursor\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a9d8c75c-0293-4ee3-839a-147905a3130f",
+          "name": "Attempt to join an open and running tournament.",
+          "request": {
+            "name": "Attempt to join an open and running tournament.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "tournament",
+                ":tournament_id",
+                "join"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tournament_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "379cb6d4-b16f-4942-8628-24ccc859db73",
+              "name": "The user joined the tournament.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "tournament",
+                    ":tournament_id",
+                    "join"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tournament_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://127.0.0.1:7350",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e04f4564-8e80-4c31-97b5-c32b78a1599d",
+    "name": "Nakama Account Tournaments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Representative OpenAPI description of the core REST API for Nakama, the open-source game and app backend server by Heroic Labs. Nakama's public HTTP API is generated by the gRPC-gateway from `api/api.proto` and is published upstream as `apigrpc/apigrpc.swagger.json` in the heroiclabs/nakama repository. This document reconstructs the primary client-facing surface: authentication, accounts and identity linking, social (friends and groups), storage, leaderboards and tournaments, notifications, and custom RPCs.\n\nAuthentication endpoints are guarded by the server key using HTTP Basic auth, where the server key is the username and the password is empty. All other endpoints are authorized with the JWT session token returned by an authenticate call, sent as `Authorization: Bearer <session_token>`. RPC endpoints may alternatively be called server-to-server with an `http_key` query parameter.\n\nContact Support:\n Name: Heroic Labs\n Email: support@heroiclabs.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nakama Account Tournaments API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tournaments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List current or upcoming tournaments.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://127.0.0.1:7350/v2/tournament",
+            "params": [
+              {
+                "name": "category_start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "category_end",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List current or upcoming tournaments."
+        },
+        {
+          "info": {
+            "name": "Attempt to join an open and running tournament.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://127.0.0.1:7350/v2/tournament/:tournament_id/join",
+            "params": [
+              {
+                "name": "tournament_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Attempt to join an open and running tournament."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,226 @@
+{
+  "item": [
+    {
+      "id": "36590084-f71c-4751-bdf0-3801672caa83",
+      "name": "Groups",
+      "description": {
+        "content": "Create and manage groups (clans) and their members.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "910c7728-dc8d-4ddc-aa6c-a7c7176e17d3",
+          "name": "Create a new group with the current user as the owner.",
+          "request": {
+            "name": "Create a new group with the current user as the owner.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "group"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"lang_tag\": \"<string>\",\n  \"avatar_url\": \"<string>\",\n  \"open\": \"<boolean>\",\n  \"max_count\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "eb7939b0-2b4c-4d57-97ba-9577c45f85b2",
+              "name": "The newly created group.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "group"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"lang_tag\": \"<string>\",\n  \"avatar_url\": \"<string>\",\n  \"open\": \"<boolean>\",\n  \"max_count\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"creator_id\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"lang_tag\": \"string\",\n  \"metadata\": \"string\",\n  \"avatar_url\": \"string\",\n  \"open\": true,\n  \"edge_count\": 9260,\n  \"max_count\": 7647,\n  \"create_time\": \"1947-11-08T03:05:30.654Z\",\n  \"update_time\": \"1974-07-26T06:18:54.589Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0900581f-4dba-4f4f-9b7a-c57636b279cb",
+          "name": "Immediately join an open group, or request to join a closed one.",
+          "request": {
+            "name": "Immediately join an open group, or request to join a closed one.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "group",
+                ":group_id",
+                "join"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "group_id",
+                  "description": "(Required) The group id to join."
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "714907c9-71f3-4cf8-9883-05261d42b6f9",
+              "name": "The user joined or requested to join the group.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "group",
+                    ":group_id",
+                    "join"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "group_id",
+                      "description": "(Required) The group id to join."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://127.0.0.1:7350",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "066ad3c2-13ed-4ef3-adea-501cc7f45ef9",
+    "name": "Nakama Account Groups API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Representative OpenAPI description of the core REST API for Nakama, the open-source game and app backend server by Heroic Labs. Nakama's public HTTP API is generated by the gRPC-gateway from `api/api.proto` and is published upstream as `apigrpc/apigrpc.swagger.json` in the heroiclabs/nakama repository. This document reconstructs the primary client-facing surface: authentication, accounts and identity linking, social (friends and groups), storage, leaderboards and tournaments, notifications, and custom RPCs.\n\nAuthentication endpoints are guarded by the server key using HTTP Basic auth, where the server key is the username and the password is empty. All other endpoints are authorized with the JWT session token returned by an authenticate call, sent as `Authorization: Bearer <session_token>`. RPC endpoints may alternatively be called server-to-server with an `http_key` query parameter.\n\nContact Support:\n Name: Heroic Labs\n Email: support@heroiclabs.com",
+      "type": "text/plain"
+    }
+  }
+}

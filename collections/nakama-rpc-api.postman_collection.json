@@ -1,0 +1,285 @@
+{
+  "item": [
+    {
+      "id": "f8e4217b-c5a9-4f0a-9059-33a548c2e776",
+      "name": "RPC",
+      "description": {
+        "content": "Call custom runtime functions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7f19d682-a554-488e-ac6f-051d4e176bb5",
+          "name": "Execute a Nakama runtime RPC function with a session token.",
+          "request": {
+            "name": "Execute a Nakama runtime RPC function with a session token.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "rpc",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "http_key",
+                  "value": "<string>",
+                  "description": "The runtime http_key for server-to-server calls, in place of a session token."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The identifier of the runtime function."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6c8e4107-e3d0-4206-83d8-7f4b85778519",
+              "name": "The payload returned from the function.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "rpc",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "http_key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The identifier of the runtime function."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<string>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"payload\": \"string\",\n  \"http_key\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "52b0b2da-b7e8-42e1-980e-e3e5fa0a927e",
+          "name": "Execute a Nakama runtime RPC function with an http key or session token.",
+          "request": {
+            "name": "Execute a Nakama runtime RPC function with an http key or session token.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "rpc",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "payload",
+                  "value": "<string>",
+                  "description": "The payload for the function, as a URL-encoded string."
+                },
+                {
+                  "disabled": false,
+                  "key": "http_key",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b80b7f99-56b8-4278-912d-0c563c6b873c",
+              "name": "The payload returned from the function.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "rpc",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "payload",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "http_key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"payload\": \"string\",\n  \"http_key\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://127.0.0.1:7350",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2b87a8f3-894e-4ffd-8553-d9b973fce9a9",
+    "name": "Nakama Account RPC API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Representative OpenAPI description of the core REST API for Nakama, the open-source game and app backend server by Heroic Labs. Nakama's public HTTP API is generated by the gRPC-gateway from `api/api.proto` and is published upstream as `apigrpc/apigrpc.swagger.json` in the heroiclabs/nakama repository. This document reconstructs the primary client-facing surface: authentication, accounts and identity linking, social (friends and groups), storage, leaderboards and tournaments, notifications, and custom RPCs.\n\nAuthentication endpoints are guarded by the server key using HTTP Basic auth, where the server key is the username and the password is empty. All other endpoints are authorized with the JWT session token returned by an authenticate call, sent as `Authorization: Bearer <session_token>`. RPC endpoints may alternatively be called server-to-server with an `http_key` query parameter.\n\nContact Support:\n Name: Heroic Labs\n Email: support@heroiclabs.com",
+      "type": "text/plain"
+    }
+  }
+}

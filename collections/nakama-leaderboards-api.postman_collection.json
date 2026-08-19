@@ -1,0 +1,292 @@
+{
+  "item": [
+    {
+      "id": "85d63383-fef7-4faf-b7e6-86cc79ae29f6",
+      "name": "Leaderboards",
+      "description": {
+        "content": "Write and list leaderboard records.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2cf575b2-c500-49fc-859f-403a731438d1",
+          "name": "List records from a leaderboard.",
+          "request": {
+            "name": "List records from a leaderboard.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "leaderboard",
+                ":leaderboard_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "owner_ids",
+                  "value": "<string>",
+                  "description": "One or more owners to retrieve records for."
+                },
+                {
+                  "disabled": false,
+                  "key": "owner_ids",
+                  "value": "<string>",
+                  "description": "One or more owners to retrieve records for."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "leaderboard_id",
+                  "description": "(Required) The leaderboard id."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8f26503f-3161-4bb6-aa07-4b26b8f1d1bf",
+              "name": "A list of leaderboard records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "leaderboard",
+                    ":leaderboard_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "owner_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "owner_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "leaderboard_id",
+                      "description": "(Required) The leaderboard id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"records\": [\n    {\n      \"leaderboard_id\": \"string\",\n      \"owner_id\": \"string\",\n      \"username\": \"string\",\n      \"score\": \"string\",\n      \"subscore\": \"string\",\n      \"num_score\": 1626,\n      \"metadata\": \"string\",\n      \"create_time\": \"1974-07-17T00:29:40.781Z\",\n      \"update_time\": \"1946-09-24T20:09:23.237Z\",\n      \"expiry_time\": \"2001-04-07T08:12:18.517Z\",\n      \"rank\": \"string\"\n    },\n    {\n      \"leaderboard_id\": \"string\",\n      \"owner_id\": \"string\",\n      \"username\": \"string\",\n      \"score\": \"string\",\n      \"subscore\": \"string\",\n      \"num_score\": 7768,\n      \"metadata\": \"string\",\n      \"create_time\": \"1965-08-20T03:44:32.957Z\",\n      \"update_time\": \"1991-06-09T02:10:00.879Z\",\n      \"expiry_time\": \"1956-09-17T09:38:29.248Z\",\n      \"rank\": \"string\"\n    }\n  ],\n  \"owner_records\": [\n    {\n      \"leaderboard_id\": \"string\",\n      \"owner_id\": \"string\",\n      \"username\": \"string\",\n      \"score\": \"string\",\n      \"subscore\": \"string\",\n      \"num_score\": 2195,\n      \"metadata\": \"string\",\n      \"create_time\": \"2009-01-30T12:59:21.059Z\",\n      \"update_time\": \"2014-01-08T00:16:15.382Z\",\n      \"expiry_time\": \"1960-09-04T10:09:02.910Z\",\n      \"rank\": \"string\"\n    },\n    {\n      \"leaderboard_id\": \"string\",\n      \"owner_id\": \"string\",\n      \"username\": \"string\",\n      \"score\": \"string\",\n      \"subscore\": \"string\",\n      \"num_score\": 2596,\n      \"metadata\": \"string\",\n      \"create_time\": \"1951-02-15T06:02:00.263Z\",\n      \"update_time\": \"1953-05-08T11:26:17.518Z\",\n      \"expiry_time\": \"1971-11-25T05:21:34.685Z\",\n      \"rank\": \"string\"\n    }\n  ],\n  \"next_cursor\": \"string\",\n  \"prev_cursor\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2c1b6217-b5a0-4d53-9e55-2d23373da5dd",
+          "name": "Write a record to a leaderboard.",
+          "request": {
+            "name": "Write a record to a leaderboard.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "leaderboard",
+                ":leaderboard_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "leaderboard_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"score\": \"<int64>\",\n  \"subscore\": \"<int64>\",\n  \"metadata\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "132ea0c0-e4d3-47d6-a08d-4a62993f9ad6",
+              "name": "The written leaderboard record.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "leaderboard",
+                    ":leaderboard_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "leaderboard_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"score\": \"<int64>\",\n  \"subscore\": \"<int64>\",\n  \"metadata\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"leaderboard_id\": \"string\",\n  \"owner_id\": \"string\",\n  \"username\": \"string\",\n  \"score\": \"string\",\n  \"subscore\": \"string\",\n  \"num_score\": 574,\n  \"metadata\": \"string\",\n  \"create_time\": \"2020-07-21T03:16:09.002Z\",\n  \"update_time\": \"2011-06-21T13:41:58.937Z\",\n  \"expiry_time\": \"1989-07-12T07:14:48.392Z\",\n  \"rank\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://127.0.0.1:7350",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "62b7fca6-1980-4a5c-ac5b-312b2830f1a8",
+    "name": "Nakama Account Leaderboards API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Representative OpenAPI description of the core REST API for Nakama, the open-source game and app backend server by Heroic Labs. Nakama's public HTTP API is generated by the gRPC-gateway from `api/api.proto` and is published upstream as `apigrpc/apigrpc.swagger.json` in the heroiclabs/nakama repository. This document reconstructs the primary client-facing surface: authentication, accounts and identity linking, social (friends and groups), storage, leaderboards and tournaments, notifications, and custom RPCs.\n\nAuthentication endpoints are guarded by the server key using HTTP Basic auth, where the server key is the username and the password is empty. All other endpoints are authorized with the JWT session token returned by an authenticate call, sent as `Authorization: Bearer <session_token>`. RPC endpoints may alternatively be called server-to-server with an `http_key` query parameter.\n\nContact Support:\n Name: Heroic Labs\n Email: support@heroiclabs.com",
+      "type": "text/plain"
+    }
+  }
+}

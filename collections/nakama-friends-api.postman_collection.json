@@ -1,0 +1,364 @@
+{
+  "item": [
+    {
+      "id": "16330817-2a60-46a2-bb80-a253b9af0eae",
+      "name": "Friends",
+      "description": {
+        "content": "Manage the friend graph.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ee66a236-e36a-4dc1-a920-51c8787ed12c",
+          "name": "List all friends for the current user.",
+          "request": {
+            "name": "List all friends for the current user.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "friend"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Max number of records to return. Between 1 and 1000."
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<integer>",
+                  "description": "The friend state to list - 0 friends, 1 invite sent, 2 invite received, 3 blocked."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "An optional next page cursor."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2c05d7f6-432a-4a2f-8681-be3aa9fa98c8",
+              "name": "A collection of zero or more friends of the user.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "friend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"friends\": [\n    {\n      \"user\": {\n        \"id\": \"string\",\n        \"username\": \"string\",\n        \"display_name\": \"string\",\n        \"avatar_url\": \"string\",\n        \"lang_tag\": \"string\",\n        \"location\": \"string\",\n        \"timezone\": \"string\",\n        \"metadata\": \"string\",\n        \"facebook_id\": \"string\",\n        \"google_id\": \"string\",\n        \"apple_id\": \"string\",\n        \"steam_id\": \"string\",\n        \"online\": false,\n        \"edge_count\": 8358,\n        \"create_time\": \"1964-08-12T08:03:55.175Z\",\n        \"update_time\": \"1963-06-16T07:17:13.734Z\"\n      },\n      \"state\": 5546,\n      \"update_time\": \"2006-09-13T00:26:38.317Z\"\n    },\n    {\n      \"user\": {\n        \"id\": \"string\",\n        \"username\": \"string\",\n        \"display_name\": \"string\",\n        \"avatar_url\": \"string\",\n        \"lang_tag\": \"string\",\n        \"location\": \"string\",\n        \"timezone\": \"string\",\n        \"metadata\": \"string\",\n        \"facebook_id\": \"string\",\n        \"google_id\": \"string\",\n        \"apple_id\": \"string\",\n        \"steam_id\": \"string\",\n        \"online\": false,\n        \"edge_count\": 8919,\n        \"create_time\": \"1974-10-30T23:51:55.884Z\",\n        \"update_time\": \"1948-12-21T17:30:59.367Z\"\n      },\n      \"state\": 8640,\n      \"update_time\": \"2016-05-29T04:49:03.025Z\"\n    }\n  ],\n  \"cursor\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8482c155-b43e-4f36-a472-95965ac17d26",
+          "name": "Add friends by ids or usernames.",
+          "request": {
+            "name": "Add friends by ids or usernames.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "friend"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "The account ids of the users to add as friends."
+                },
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "The account ids of the users to add as friends."
+                },
+                {
+                  "disabled": false,
+                  "key": "usernames",
+                  "value": "<string>",
+                  "description": "The usernames of the users to add as friends."
+                },
+                {
+                  "disabled": false,
+                  "key": "usernames",
+                  "value": "<string>",
+                  "description": "The usernames of the users to add as friends."
+                }
+              ],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "890fee32-a8df-478c-ad7e-37e52cc50591",
+              "name": "The friends were added or invited.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "friend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "usernames",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "usernames",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e8394f64-7ed4-4aa4-adb3-50337a8bba44",
+          "name": "Delete one or more friends for the current user.",
+          "request": {
+            "name": "Delete one or more friends for the current user.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "friend"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "usernames",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "usernames",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c3aa5a9f-14d4-4aa6-8ee8-5a97d18b265e",
+              "name": "The friends were deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "friend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "usernames",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "usernames",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://127.0.0.1:7350",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "89940f17-008b-4f9d-9cae-e0eb2eeb1396",
+    "name": "Nakama Account Friends API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Representative OpenAPI description of the core REST API for Nakama, the open-source game and app backend server by Heroic Labs. Nakama's public HTTP API is generated by the gRPC-gateway from `api/api.proto` and is published upstream as `apigrpc/apigrpc.swagger.json` in the heroiclabs/nakama repository. This document reconstructs the primary client-facing surface: authentication, accounts and identity linking, social (friends and groups), storage, leaderboards and tournaments, notifications, and custom RPCs.\n\nAuthentication endpoints are guarded by the server key using HTTP Basic auth, where the server key is the username and the password is empty. All other endpoints are authorized with the JWT session token returned by an authenticate call, sent as `Authorization: Bearer <session_token>`. RPC endpoints may alternatively be called server-to-server with an `http_key` query parameter.\n\nContact Support:\n Name: Heroic Labs\n Email: support@heroiclabs.com",
+      "type": "text/plain"
+    }
+  }
+}

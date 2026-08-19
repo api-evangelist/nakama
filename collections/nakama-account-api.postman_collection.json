@@ -1,0 +1,602 @@
+{
+  "item": [
+    {
+      "id": "6319f7e8-c804-4a2d-ab0d-7f7f36ce043f",
+      "name": "Account",
+      "description": {
+        "content": "Read, update, and delete the current account and link identities.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9aef46b0-ac1d-4a02-a72a-72b85cc0b74c",
+          "name": "Fetch the current user's account.",
+          "request": {
+            "name": "Fetch the current user's account.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "account"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5f2af02b-56e2-4d34-aa41-567687fef419",
+              "name": "The current user's account.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "account"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user\": {\n    \"id\": \"string\",\n    \"username\": \"string\",\n    \"display_name\": \"string\",\n    \"avatar_url\": \"string\",\n    \"lang_tag\": \"string\",\n    \"location\": \"string\",\n    \"timezone\": \"string\",\n    \"metadata\": \"string\",\n    \"facebook_id\": \"string\",\n    \"google_id\": \"string\",\n    \"apple_id\": \"string\",\n    \"steam_id\": \"string\",\n    \"online\": true,\n    \"edge_count\": 3918,\n    \"create_time\": \"1997-05-24T21:07:16.012Z\",\n    \"update_time\": \"1998-11-03T04:02:24.836Z\"\n  },\n  \"wallet\": \"string\",\n  \"email\": \"string\",\n  \"devices\": [\n    {\n      \"id\": \"string\",\n      \"vars\": {\n        \"key_0\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"vars\": {\n        \"key_0\": \"string\"\n      }\n    }\n  ],\n  \"custom_id\": \"string\",\n  \"verify_time\": \"2006-11-09T11:35:42.418Z\",\n  \"disable_time\": \"2012-08-17T07:58:41.475Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "52d51c0f-797e-48e1-aa2d-1b93ac263531",
+          "name": "Update fields in the current user's account.",
+          "request": {
+            "name": "Update fields in the current user's account.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "account"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"<string>\",\n  \"display_name\": \"<string>\",\n  \"avatar_url\": \"<string>\",\n  \"lang_tag\": \"<string>\",\n  \"location\": \"<string>\",\n  \"timezone\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dfd09d53-c18b-4ef5-919a-bf7b8813b85e",
+              "name": "The account was updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "account"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"<string>\",\n  \"display_name\": \"<string>\",\n  \"avatar_url\": \"<string>\",\n  \"lang_tag\": \"<string>\",\n  \"location\": \"<string>\",\n  \"timezone\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "86a0b307-ed19-4fd1-b469-53d954ddc0f7",
+          "name": "Delete the current user's account.",
+          "request": {
+            "name": "Delete the current user's account.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "account"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1289d929-c388-4f11-934a-f438eaac32a3",
+              "name": "The account was deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "account"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3eab0e16-2b24-4582-82eb-d0f3684df968",
+          "name": "Add a device id to the social profiles on the current user's account.",
+          "request": {
+            "name": "Add a device id to the social profiles on the current user's account.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "account",
+                "link",
+                "device"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"vars\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5d480fc9-e929-4d59-b293-50e31f4daba0",
+              "name": "The device was linked.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "account",
+                    "link",
+                    "device"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"vars\": {\n    \"key_0\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c67752f9-94f8-4a03-9c21-f2dc19d1412f",
+          "name": "Remove a device id from the social profiles on the current user's account.",
+          "request": {
+            "name": "Remove a device id from the social profiles on the current user's account.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "account",
+                "unlink",
+                "device"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"vars\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9a3eb98b-5d76-4b08-b66a-8135773c4140",
+              "name": "The device was unlinked.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "account",
+                    "unlink",
+                    "device"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"vars\": {\n    \"key_0\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1add05cc-0ac0-457a-b78a-ad8d87b9dbc2",
+          "name": "Fetch zero or more users by id, username, and/or Facebook id.",
+          "request": {
+            "name": "Fetch zero or more users by id, username, and/or Facebook id.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "user"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "The account ids of the users."
+                },
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "The account ids of the users."
+                },
+                {
+                  "disabled": false,
+                  "key": "usernames",
+                  "value": "<string>",
+                  "description": "The account usernames."
+                },
+                {
+                  "disabled": false,
+                  "key": "usernames",
+                  "value": "<string>",
+                  "description": "The account usernames."
+                },
+                {
+                  "disabled": false,
+                  "key": "facebook_ids",
+                  "value": "<string>",
+                  "description": "The Facebook ids of the users."
+                },
+                {
+                  "disabled": false,
+                  "key": "facebook_ids",
+                  "value": "<string>",
+                  "description": "The Facebook ids of the users."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ee50c9a9-dba6-4b55-9278-1fe40c10c096",
+              "name": "A collection of user objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "usernames",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "usernames",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "facebook_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "facebook_ids",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"users\": [\n    {\n      \"id\": \"string\",\n      \"username\": \"string\",\n      \"display_name\": \"string\",\n      \"avatar_url\": \"string\",\n      \"lang_tag\": \"string\",\n      \"location\": \"string\",\n      \"timezone\": \"string\",\n      \"metadata\": \"string\",\n      \"facebook_id\": \"string\",\n      \"google_id\": \"string\",\n      \"apple_id\": \"string\",\n      \"steam_id\": \"string\",\n      \"online\": false,\n      \"edge_count\": 6556,\n      \"create_time\": \"1974-05-19T01:25:50.280Z\",\n      \"update_time\": \"1958-07-23T01:47:52.411Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"username\": \"string\",\n      \"display_name\": \"string\",\n      \"avatar_url\": \"string\",\n      \"lang_tag\": \"string\",\n      \"location\": \"string\",\n      \"timezone\": \"string\",\n      \"metadata\": \"string\",\n      \"facebook_id\": \"string\",\n      \"google_id\": \"string\",\n      \"apple_id\": \"string\",\n      \"steam_id\": \"string\",\n      \"online\": false,\n      \"edge_count\": 1148,\n      \"create_time\": \"1951-11-02T09:00:28.126Z\",\n      \"update_time\": \"1965-11-29T10:43:15.340Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://127.0.0.1:7350",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "62bb82b2-304f-4fc0-89c2-35a03b44bf8b",
+    "name": "Nakama Account API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Representative OpenAPI description of the core REST API for Nakama, the open-source game and app backend server by Heroic Labs. Nakama's public HTTP API is generated by the gRPC-gateway from `api/api.proto` and is published upstream as `apigrpc/apigrpc.swagger.json` in the heroiclabs/nakama repository. This document reconstructs the primary client-facing surface: authentication, accounts and identity linking, social (friends and groups), storage, leaderboards and tournaments, notifications, and custom RPCs.\n\nAuthentication endpoints are guarded by the server key using HTTP Basic auth, where the server key is the username and the password is empty. All other endpoints are authorized with the JWT session token returned by an authenticate call, sent as `Authorization: Bearer <session_token>`. RPC endpoints may alternatively be called server-to-server with an `http_key` query parameter.\n\nContact Support:\n Name: Heroic Labs\n Email: support@heroiclabs.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,454 @@
+{
+  "item": [
+    {
+      "id": "11c1efe0-c40d-44e1-ae68-ea21688c9ccf",
+      "name": "Storage",
+      "description": {
+        "content": "Read, write, list, and delete storage objects.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fcc64189-da71-4816-ba3e-de31a0c5afdf",
+          "name": "Write objects into the storage engine.",
+          "request": {
+            "name": "Write objects into the storage engine.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "storage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"objects\": [\n    {\n      \"collection\": \"<string>\",\n      \"key\": \"<string>\",\n      \"value\": \"<string>\",\n      \"version\": \"<string>\",\n      \"permission_read\": \"<integer>\",\n      \"permission_write\": \"<integer>\"\n    },\n    {\n      \"collection\": \"<string>\",\n      \"key\": \"<string>\",\n      \"value\": \"<string>\",\n      \"version\": \"<string>\",\n      \"permission_read\": \"<integer>\",\n      \"permission_write\": \"<integer>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "87fc1e6a-2db3-4753-ab77-4e88a2af6757",
+              "name": "Acknowledgements of the written objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "storage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"objects\": [\n    {\n      \"collection\": \"<string>\",\n      \"key\": \"<string>\",\n      \"value\": \"<string>\",\n      \"version\": \"<string>\",\n      \"permission_read\": \"<integer>\",\n      \"permission_write\": \"<integer>\"\n    },\n    {\n      \"collection\": \"<string>\",\n      \"key\": \"<string>\",\n      \"value\": \"<string>\",\n      \"version\": \"<string>\",\n      \"permission_read\": \"<integer>\",\n      \"permission_write\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"acks\": [\n    {\n      \"collection\": \"string\",\n      \"key\": \"string\",\n      \"version\": \"string\",\n      \"user_id\": \"string\"\n    },\n    {\n      \"collection\": \"string\",\n      \"key\": \"string\",\n      \"version\": \"string\",\n      \"user_id\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cd0c399c-9595-49a2-ae8f-c0cae257d5ab",
+          "name": "Get objects from the storage engine.",
+          "request": {
+            "name": "Get objects from the storage engine.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "storage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"object_ids\": [\n    {\n      \"collection\": \"<string>\",\n      \"key\": \"<string>\",\n      \"user_id\": \"<string>\"\n    },\n    {\n      \"collection\": \"<string>\",\n      \"key\": \"<string>\",\n      \"user_id\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2002773a-9463-43ec-8815-8944746b423b",
+              "name": "A list of storage objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "storage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"object_ids\": [\n    {\n      \"collection\": \"<string>\",\n      \"key\": \"<string>\",\n      \"user_id\": \"<string>\"\n    },\n    {\n      \"collection\": \"<string>\",\n      \"key\": \"<string>\",\n      \"user_id\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"objects\": [\n    {\n      \"collection\": \"string\",\n      \"key\": \"string\",\n      \"user_id\": \"string\",\n      \"value\": \"string\",\n      \"version\": \"string\",\n      \"permission_read\": 4152,\n      \"permission_write\": 1909,\n      \"create_time\": \"2008-04-18T13:47:44.298Z\",\n      \"update_time\": \"1984-06-11T14:21:14.267Z\"\n    },\n    {\n      \"collection\": \"string\",\n      \"key\": \"string\",\n      \"user_id\": \"string\",\n      \"value\": \"string\",\n      \"version\": \"string\",\n      \"permission_read\": 3485,\n      \"permission_write\": 6443,\n      \"create_time\": \"2014-10-23T01:00:48.157Z\",\n      \"update_time\": \"1966-07-22T20:29:51.307Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8b6db73b-377e-4cbe-88b9-c984647b77f9",
+          "name": "List publicly readable storage objects in a given collection.",
+          "request": {
+            "name": "List publicly readable storage objects in a given collection.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "storage",
+                ":collection"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<string>",
+                  "description": "The user id of the storage objects to list. Set empty to list all users."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "collection",
+                  "description": "(Required) The collection to list over."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a56012e3-ce52-4c6b-b03d-60916d057d7c",
+              "name": "A list of storage objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "storage",
+                    ":collection"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collection",
+                      "description": "(Required) The collection to list over."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"objects\": [\n    {\n      \"collection\": \"string\",\n      \"key\": \"string\",\n      \"user_id\": \"string\",\n      \"value\": \"string\",\n      \"version\": \"string\",\n      \"permission_read\": 9301,\n      \"permission_write\": 9854,\n      \"create_time\": \"1970-10-27T18:16:13.237Z\",\n      \"update_time\": \"1990-07-11T17:33:04.291Z\"\n    },\n    {\n      \"collection\": \"string\",\n      \"key\": \"string\",\n      \"user_id\": \"string\",\n      \"value\": \"string\",\n      \"version\": \"string\",\n      \"permission_read\": 1964,\n      \"permission_write\": 8384,\n      \"create_time\": \"1965-08-14T02:42:19.459Z\",\n      \"update_time\": \"1991-01-31T00:09:53.160Z\"\n    }\n  ],\n  \"cursor\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e0e101af-5d0f-4b2a-a3b4-f374e1311cd0",
+          "name": "Delete one or more objects by id or username.",
+          "request": {
+            "name": "Delete one or more objects by id or username.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "storage",
+                "delete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"object_ids\": [\n    {\n      \"collection\": \"<string>\",\n      \"key\": \"<string>\",\n      \"version\": \"<string>\"\n    },\n    {\n      \"collection\": \"<string>\",\n      \"key\": \"<string>\",\n      \"version\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0a173d12-14bb-4e6d-93a6-05969049e0b2",
+              "name": "The objects were deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "storage",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"object_ids\": [\n    {\n      \"collection\": \"<string>\",\n      \"key\": \"<string>\",\n      \"version\": \"<string>\"\n    },\n    {\n      \"collection\": \"<string>\",\n      \"key\": \"<string>\",\n      \"version\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://127.0.0.1:7350",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1034c296-ba47-4459-9453-3d56a93127c4",
+    "name": "Nakama Account Storage API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Representative OpenAPI description of the core REST API for Nakama, the open-source game and app backend server by Heroic Labs. Nakama's public HTTP API is generated by the gRPC-gateway from `api/api.proto` and is published upstream as `apigrpc/apigrpc.swagger.json` in the heroiclabs/nakama repository. This document reconstructs the primary client-facing surface: authentication, accounts and identity linking, social (friends and groups), storage, leaderboards and tournaments, notifications, and custom RPCs.\n\nAuthentication endpoints are guarded by the server key using HTTP Basic auth, where the server key is the username and the password is empty. All other endpoints are authorized with the JWT session token returned by an authenticate call, sent as `Authorization: Bearer <session_token>`. RPC endpoints may alternatively be called server-to-server with an `http_key` query parameter.\n\nContact Support:\n Name: Heroic Labs\n Email: support@heroiclabs.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nakama Account Authentication API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Authenticate a user with a device id against the server.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://127.0.0.1:7350/v2/account/authenticate/device",
+            "params": [
+              {
+                "name": "create",
+                "value": "",
+                "type": "query",
+                "description": "Register the account if the user does not already exist."
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "query",
+                "description": "Set the username on the account at register. Ignored if the account exists."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Authenticate a user with a device id against the server."
+        },
+        {
+          "info": {
+            "name": "Authenticate a user with an email and password against the server.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://127.0.0.1:7350/v2/account/authenticate/email",
+            "params": [
+              {
+                "name": "create",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Authenticate a user with an email and password against the server."
+        },
+        {
+          "info": {
+            "name": "Authenticate a user with a custom id against the server.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://127.0.0.1:7350/v2/account/authenticate/custom",
+            "params": [
+              {
+                "name": "create",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Authenticate a user with a custom id against the server."
+        },
+        {
+          "info": {
+            "name": "Refresh a user's session using a refresh token retrieved from a previous authentication request.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://127.0.0.1:7350/v2/account/session/refresh",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Refresh a user's session using a refresh token retrieved from a previous authentication request."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,82 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nakama Account RPC API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "RPC",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Execute a Nakama runtime RPC function with an http key or session token.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://127.0.0.1:7350/v2/rpc/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "payload",
+                "value": "",
+                "type": "query",
+                "description": "The payload for the function, as a URL-encoded string."
+              },
+              {
+                "name": "http_key",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Execute a Nakama runtime RPC function with an http key or session token."
+        },
+        {
+          "info": {
+            "name": "Execute a Nakama runtime RPC function with a session token.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://127.0.0.1:7350/v2/rpc/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the runtime function."
+              },
+              {
+                "name": "http_key",
+                "value": "",
+                "type": "query",
+                "description": "The runtime http_key for server-to-server calls, in place of a session token."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Execute a Nakama runtime RPC function with a session token."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

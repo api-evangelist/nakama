@@ -1,0 +1,103 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nakama Account Friends API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Friends",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all friends for the current user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://127.0.0.1:7350/v2/friend",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Max number of records to return. Between 1 and 1000."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "The friend state to list - 0 friends, 1 invite sent, 2 invite received, 3 blocked."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "An optional next page cursor."
+              }
+            ]
+          },
+          "docs": "List all friends for the current user."
+        },
+        {
+          "info": {
+            "name": "Add friends by ids or usernames.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://127.0.0.1:7350/v2/friend",
+            "params": [
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "The account ids of the users to add as friends."
+              },
+              {
+                "name": "usernames",
+                "value": "",
+                "type": "query",
+                "description": "The usernames of the users to add as friends."
+              }
+            ]
+          },
+          "docs": "Add friends by ids or usernames."
+        },
+        {
+          "info": {
+            "name": "Delete one or more friends for the current user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://127.0.0.1:7350/v2/friend",
+            "params": [
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "usernames",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete one or more friends for the current user."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
