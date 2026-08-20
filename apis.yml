@@ -27,6 +27,16 @@ tags:
 - Gaming
 - Game Backend
 - Backend
+- Real-Time
+- Multiplayer
+- Matchmaking
+- Leaderboards
+- Social
+- Open-Source
+tags_raw:
+- Gaming
+- Game Backend
+- Backend
 - Realtime
 - Multiplayer
 - Matchmaking
@@ -40,6 +50,12 @@ apis:
 - aid: nakama:nakama-realtime-api
   name: Nakama Realtime Socket API
   tags:
+  - Real-Time
+  - WebSocket
+  - Multiplayer
+  - Matchmaking
+  - Chat
+  tags_raw:
   - Realtime
   - WebSocket
   - Multiplayer
@@ -62,6 +78,9 @@ apis:
 - aid: nakama:nakama-console-api
   name: Nakama Console API
   tags:
+  - Console
+  - Administration
+  tags_raw:
   - Console
   - Administration
   - Operations
@@ -178,6 +197,8 @@ apis:
   humanURL: https://heroiclabs.com/docs/nakama/concepts/authentication/
   baseURL: http://127.0.0.1:7350/v2
   tags:
+  - Group
+  tags_raw:
   - Groups
   properties:
   - type: OpenAPI
@@ -242,6 +263,8 @@ apis:
   humanURL: https://heroiclabs.com/docs/nakama/concepts/authentication/
   baseURL: http://127.0.0.1:7350/v2
   tags:
+  - Notification
+  tags_raw:
   - Notifications
   properties:
   - type: OpenAPI
