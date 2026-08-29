@@ -9,6 +9,18 @@ description: Nakama by Heroic Labs is an open-source (Apache-2.0) game and app b
   runtime with custom RPCs in Go, TypeScript/JavaScript, and Lua. Nakama exposes a
   gRPC-gateway-generated REST API plus a realtime WebSocket socket API, and is
   available self-hosted or as the managed Heroic Cloud.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
