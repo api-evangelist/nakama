@@ -1,15 +1,7 @@
 {
   "provider": "nakama",
   "sources": [
-    "nakama-account-api-openapi.yml",
-    "nakama-authentication-api-openapi.yml",
-    "nakama-friends-api-openapi.yml",
-    "nakama-groups-api-openapi.yml",
-    "nakama-leaderboards-api-openapi.yml",
-    "nakama-notifications-api-openapi.yml",
-    "nakama-rpc-api-openapi.yml",
-    "nakama-storage-api-openapi.yml",
-    "nakama-tournaments-api-openapi.yml"
+    "_original/nakama-openapi.yml"
   ],
   "outputs": [
     "nakama-account-api-openapi.yml",
@@ -25,6 +17,20 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "nakama-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "nakama-account-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nakama-authentication-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nakama-friends-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nakama-groups-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nakama-leaderboards-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nakama-notifications-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nakama-rpc-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nakama-storage-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nakama-tournaments-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
