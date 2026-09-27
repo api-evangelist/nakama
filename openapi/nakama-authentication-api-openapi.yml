@@ -135,20 +135,6 @@ paths:
                 $ref: '#/components/schemas/Session'
 components:
   schemas:
-    AccountDevice:
-      type: object
-      description: Send a device to the server. Used with authenticate/link/unlink and register.
-      required:
-      - id
-      properties:
-        id:
-          type: string
-          description: A device identifier. Must be between 10 and 128 bytes.
-        vars:
-          type: object
-          additionalProperties:
-            type: string
-          description: Extra information stored on the session.
     AuthenticateCustomRequest:
       type: object
       properties:
@@ -169,15 +155,6 @@ components:
           additionalProperties:
             type: string
           description: Extra information passed to the identity providers.
-    AuthenticateDeviceRequest:
-      type: object
-      properties:
-        account:
-          $ref: '#/components/schemas/AccountDevice'
-        create:
-          type: boolean
-        username:
-          type: string
     Session:
       type: object
       description: A user's session used to authenticate messages.
@@ -208,6 +185,24 @@ components:
           type: object
           additionalProperties:
             type: string
+    AuthenticateDeviceRequest:
+      type: object
+      properties:
+        account:
+          $ref: '#/components/schemas/AccountDevice'
+        create:
+          type: boolean
+        username:
+          type: string
+    AuthenticateEmailRequest:
+      type: object
+      properties:
+        account:
+          $ref: '#/components/schemas/AccountEmail'
+        create:
+          type: boolean
+        username:
+          type: string
     AccountCustom:
       type: object
       description: Send a custom id to the server.
@@ -221,15 +216,20 @@ components:
           type: object
           additionalProperties:
             type: string
-    AuthenticateEmailRequest:
+    AccountDevice:
       type: object
+      description: Send a device to the server. Used with authenticate/link/unlink and register.
+      required:
+      - id
       properties:
-        account:
-          $ref: '#/components/schemas/AccountEmail'
-        create:
-          type: boolean
-        username:
+        id:
           type: string
+          description: A device identifier. Must be between 10 and 128 bytes.
+        vars:
+          type: object
+          additionalProperties:
+            type: string
+          description: Extra information stored on the session.
   securitySchemes:
     BasicAuth:
       type: http

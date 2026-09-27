@@ -63,6 +63,15 @@ paths:
           description: The notifications were deleted.
 components:
   schemas:
+    NotificationList:
+      type: object
+      properties:
+        notifications:
+          type: array
+          items:
+            $ref: '#/components/schemas/Notification'
+        cacheable_cursor:
+          type: string
     Notification:
       type: object
       description: A notification in the server.
@@ -85,15 +94,6 @@ components:
           format: date-time
         persistent:
           type: boolean
-    NotificationList:
-      type: object
-      properties:
-        notifications:
-          type: array
-          items:
-            $ref: '#/components/schemas/Notification'
-        cacheable_cursor:
-          type: string
   securitySchemes:
     BasicAuth:
       type: http
