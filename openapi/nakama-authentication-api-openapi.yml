@@ -135,39 +135,6 @@ paths:
                 $ref: '#/components/schemas/Session'
 components:
   schemas:
-    AuthenticateCustomRequest:
-      type: object
-      properties:
-        account:
-          $ref: '#/components/schemas/AccountCustom'
-        create:
-          type: boolean
-        username:
-          type: string
-    SessionRefreshRequest:
-      type: object
-      properties:
-        token:
-          type: string
-          description: Refresh token.
-        vars:
-          type: object
-          additionalProperties:
-            type: string
-          description: Extra information passed to the identity providers.
-    Session:
-      type: object
-      description: A user's session used to authenticate messages.
-      properties:
-        created:
-          type: boolean
-          description: True if the corresponding account was just created, false otherwise.
-        token:
-          type: string
-          description: Authentication credentials (JWT session token).
-        refresh_token:
-          type: string
-          description: Refresh token that can be used to renew a session.
     AccountEmail:
       type: object
       description: Send an email with password to the server.
@@ -194,28 +161,15 @@ components:
           type: boolean
         username:
           type: string
-    AuthenticateEmailRequest:
+    AuthenticateCustomRequest:
       type: object
       properties:
         account:
-          $ref: '#/components/schemas/AccountEmail'
+          $ref: '#/components/schemas/AccountCustom'
         create:
           type: boolean
         username:
           type: string
-    AccountCustom:
-      type: object
-      description: Send a custom id to the server.
-      required:
-      - id
-      properties:
-        id:
-          type: string
-          description: A custom identifier. Must be between 6 and 128 bytes.
-        vars:
-          type: object
-          additionalProperties:
-            type: string
     AccountDevice:
       type: object
       description: Send a device to the server. Used with authenticate/link/unlink and register.
@@ -230,6 +184,52 @@ components:
           additionalProperties:
             type: string
           description: Extra information stored on the session.
+    SessionRefreshRequest:
+      type: object
+      properties:
+        token:
+          type: string
+          description: Refresh token.
+        vars:
+          type: object
+          additionalProperties:
+            type: string
+          description: Extra information passed to the identity providers.
+    AccountCustom:
+      type: object
+      description: Send a custom id to the server.
+      required:
+      - id
+      properties:
+        id:
+          type: string
+          description: A custom identifier. Must be between 6 and 128 bytes.
+        vars:
+          type: object
+          additionalProperties:
+            type: string
+    AuthenticateEmailRequest:
+      type: object
+      properties:
+        account:
+          $ref: '#/components/schemas/AccountEmail'
+        create:
+          type: boolean
+        username:
+          type: string
+    Session:
+      type: object
+      description: A user's session used to authenticate messages.
+      properties:
+        created:
+          type: boolean
+          description: True if the corresponding account was just created, false otherwise.
+        token:
+          type: string
+          description: Authentication credentials (JWT session token).
+        refresh_token:
+          type: string
+          description: Refresh token that can be used to renew a session.
   securitySchemes:
     BasicAuth:
       type: http

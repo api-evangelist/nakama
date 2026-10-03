@@ -108,43 +108,13 @@ paths:
           description: The objects were deleted.
 components:
   schemas:
-    StorageObjectAcks:
+    DeleteStorageObjectsRequest:
       type: object
       properties:
-        acks:
+        object_ids:
           type: array
           items:
-            $ref: '#/components/schemas/StorageObjectAck'
-    StorageObjectList:
-      type: object
-      properties:
-        objects:
-          type: array
-          items:
-            $ref: '#/components/schemas/StorageObject'
-        cursor:
-          type: string
-    WriteStorageObject:
-      type: object
-      required:
-      - collection
-      - key
-      - value
-      properties:
-        collection:
-          type: string
-        key:
-          type: string
-        value:
-          type: string
-        version:
-          type: string
-        permission_read:
-          type: integer
-          format: int32
-        permission_write:
-          type: integer
-          format: int32
+            $ref: '#/components/schemas/DeleteStorageObjectId'
     StorageObject:
       type: object
       description: An object within the storage engine.
@@ -178,6 +148,20 @@ components:
         update_time:
           type: string
           format: date-time
+    ReadStorageObjectsRequest:
+      type: object
+      properties:
+        object_ids:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReadStorageObjectId'
+    WriteStorageObjectsRequest:
+      type: object
+      properties:
+        objects:
+          type: array
+          items:
+            $ref: '#/components/schemas/WriteStorageObject'
     StorageObjectAck:
       type: object
       properties:
@@ -189,27 +173,6 @@ components:
           type: string
         user_id:
           type: string
-    DeleteStorageObjectsRequest:
-      type: object
-      properties:
-        object_ids:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeleteStorageObjectId'
-    StorageObjects:
-      type: object
-      properties:
-        objects:
-          type: array
-          items:
-            $ref: '#/components/schemas/StorageObject'
-    ReadStorageObjectsRequest:
-      type: object
-      properties:
-        object_ids:
-          type: array
-          items:
-            $ref: '#/components/schemas/ReadStorageObjectId'
     DeleteStorageObjectId:
       type: object
       required:
@@ -222,13 +185,6 @@ components:
           type: string
         version:
           type: string
-    WriteStorageObjectsRequest:
-      type: object
-      properties:
-        objects:
-          type: array
-          items:
-            $ref: '#/components/schemas/WriteStorageObject'
     ReadStorageObjectId:
       type: object
       required:
@@ -241,6 +197,50 @@ components:
           type: string
         user_id:
           type: string
+    StorageObjectList:
+      type: object
+      properties:
+        objects:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageObject'
+        cursor:
+          type: string
+    WriteStorageObject:
+      type: object
+      required:
+      - collection
+      - key
+      - value
+      properties:
+        collection:
+          type: string
+        key:
+          type: string
+        value:
+          type: string
+        version:
+          type: string
+        permission_read:
+          type: integer
+          format: int32
+        permission_write:
+          type: integer
+          format: int32
+    StorageObjects:
+      type: object
+      properties:
+        objects:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageObject'
+    StorageObjectAcks:
+      type: object
+      properties:
+        acks:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageObjectAck'
   securitySchemes:
     BasicAuth:
       type: http
