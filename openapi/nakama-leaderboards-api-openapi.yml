@@ -82,6 +82,32 @@ paths:
                 $ref: '#/components/schemas/LeaderboardRecord'
 components:
   schemas:
+    LeaderboardRecordList:
+      type: object
+      properties:
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/LeaderboardRecord'
+        owner_records:
+          type: array
+          items:
+            $ref: '#/components/schemas/LeaderboardRecord'
+        next_cursor:
+          type: string
+        prev_cursor:
+          type: string
+    WriteLeaderboardRecordRequest:
+      type: object
+      properties:
+        score:
+          type: string
+          format: int64
+        subscore:
+          type: string
+          format: int64
+        metadata:
+          type: string
     LeaderboardRecord:
       type: object
       description: Represents a complete leaderboard record with all scores and associated metadata.
@@ -115,32 +141,6 @@ components:
         rank:
           type: string
           format: int64
-    LeaderboardRecordList:
-      type: object
-      properties:
-        records:
-          type: array
-          items:
-            $ref: '#/components/schemas/LeaderboardRecord'
-        owner_records:
-          type: array
-          items:
-            $ref: '#/components/schemas/LeaderboardRecord'
-        next_cursor:
-          type: string
-        prev_cursor:
-          type: string
-    WriteLeaderboardRecordRequest:
-      type: object
-      properties:
-        score:
-          type: string
-          format: int64
-        subscore:
-          type: string
-          format: int64
-        metadata:
-          type: string
   securitySchemes:
     BasicAuth:
       type: http

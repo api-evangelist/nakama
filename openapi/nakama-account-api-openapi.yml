@@ -143,21 +143,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/User'
-    UpdateAccountRequest:
-      type: object
-      properties:
-        username:
-          type: string
-        display_name:
-          type: string
-        avatar_url:
-          type: string
-        lang_tag:
-          type: string
-        location:
-          type: string
-        timezone:
-          type: string
     Account:
       type: object
       description: A user's full account, including linked identities and wallet.
@@ -181,6 +166,21 @@ components:
         disable_time:
           type: string
           format: date-time
+    UpdateAccountRequest:
+      type: object
+      properties:
+        username:
+          type: string
+        display_name:
+          type: string
+        avatar_url:
+          type: string
+        lang_tag:
+          type: string
+        location:
+          type: string
+        timezone:
+          type: string
     User:
       type: object
       description: A user in the system.

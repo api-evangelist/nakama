@@ -97,15 +97,6 @@ paths:
           description: The friends were deleted.
 components:
   schemas:
-    FriendList:
-      type: object
-      properties:
-        friends:
-          type: array
-          items:
-            $ref: '#/components/schemas/Friend'
-        cursor:
-          type: string
     Friend:
       type: object
       description: A friend of a user.
@@ -161,6 +152,15 @@ components:
         update_time:
           type: string
           format: date-time
+    FriendList:
+      type: object
+      properties:
+        friends:
+          type: array
+          items:
+            $ref: '#/components/schemas/Friend'
+        cursor:
+          type: string
   securitySchemes:
     BasicAuth:
       type: http

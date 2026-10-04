@@ -57,25 +57,6 @@ paths:
           description: The user joined or requested to join the group.
 components:
   schemas:
-    CreateGroupRequest:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        lang_tag:
-          type: string
-        avatar_url:
-          type: string
-        open:
-          type: boolean
-          description: Whether the group should have open membership.
-        max_count:
-          type: integer
-          format: int32
     Group:
       type: object
       description: A group in the server.
@@ -108,6 +89,25 @@ components:
         update_time:
           type: string
           format: date-time
+    CreateGroupRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        lang_tag:
+          type: string
+        avatar_url:
+          type: string
+        open:
+          type: boolean
+          description: Whether the group should have open membership.
+        max_count:
+          type: integer
+          format: int32
   securitySchemes:
     BasicAuth:
       type: http

@@ -135,6 +135,53 @@ paths:
                 $ref: '#/components/schemas/Session'
 components:
   schemas:
+    SessionRefreshRequest:
+      type: object
+      properties:
+        token:
+          type: string
+          description: Refresh token.
+        vars:
+          type: object
+          additionalProperties:
+            type: string
+          description: Extra information passed to the identity providers.
+    AccountDevice:
+      type: object
+      description: Send a device to the server. Used with authenticate/link/unlink and register.
+      required:
+      - id
+      properties:
+        id:
+          type: string
+          description: A device identifier. Must be between 10 and 128 bytes.
+        vars:
+          type: object
+          additionalProperties:
+            type: string
+          description: Extra information stored on the session.
+    AuthenticateEmailRequest:
+      type: object
+      properties:
+        account:
+          $ref: '#/components/schemas/AccountEmail'
+        create:
+          type: boolean
+        username:
+          type: string
+    AccountCustom:
+      type: object
+      description: Send a custom id to the server.
+      required:
+      - id
+      properties:
+        id:
+          type: string
+          description: A custom identifier. Must be between 6 and 128 bytes.
+        vars:
+          type: object
+          additionalProperties:
+            type: string
     AccountEmail:
       type: object
       description: Send an email with password to the server.
@@ -152,71 +199,6 @@ components:
           type: object
           additionalProperties:
             type: string
-    AuthenticateDeviceRequest:
-      type: object
-      properties:
-        account:
-          $ref: '#/components/schemas/AccountDevice'
-        create:
-          type: boolean
-        username:
-          type: string
-    AuthenticateCustomRequest:
-      type: object
-      properties:
-        account:
-          $ref: '#/components/schemas/AccountCustom'
-        create:
-          type: boolean
-        username:
-          type: string
-    AccountDevice:
-      type: object
-      description: Send a device to the server. Used with authenticate/link/unlink and register.
-      required:
-      - id
-      properties:
-        id:
-          type: string
-          description: A device identifier. Must be between 10 and 128 bytes.
-        vars:
-          type: object
-          additionalProperties:
-            type: string
-          description: Extra information stored on the session.
-    SessionRefreshRequest:
-      type: object
-      properties:
-        token:
-          type: string
-          description: Refresh token.
-        vars:
-          type: object
-          additionalProperties:
-            type: string
-          description: Extra information passed to the identity providers.
-    AccountCustom:
-      type: object
-      description: Send a custom id to the server.
-      required:
-      - id
-      properties:
-        id:
-          type: string
-          description: A custom identifier. Must be between 6 and 128 bytes.
-        vars:
-          type: object
-          additionalProperties:
-            type: string
-    AuthenticateEmailRequest:
-      type: object
-      properties:
-        account:
-          $ref: '#/components/schemas/AccountEmail'
-        create:
-          type: boolean
-        username:
-          type: string
     Session:
       type: object
       description: A user's session used to authenticate messages.
@@ -230,6 +212,24 @@ components:
         refresh_token:
           type: string
           description: Refresh token that can be used to renew a session.
+    AuthenticateCustomRequest:
+      type: object
+      properties:
+        account:
+          $ref: '#/components/schemas/AccountCustom'
+        create:
+          type: boolean
+        username:
+          type: string
+    AuthenticateDeviceRequest:
+      type: object
+      properties:
+        account:
+          $ref: '#/components/schemas/AccountDevice'
+        create:
+          type: boolean
+        username:
+          type: string
   securitySchemes:
     BasicAuth:
       type: http
