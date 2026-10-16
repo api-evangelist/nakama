@@ -3,15 +3,13 @@
   "feeds": [
     {
       "source": "https://heroiclabs.com/blog/",
-      "feed_url": "https://heroiclabs.com/blog/",
-      "title": "Heroic Labs Blog",
+      "feed_url": "https://heroiclabs.com/blog/index.xml",
+      "title": "",
       "saved": 0,
-      "error": "parse_failed",
-      "nature": "vendor-blog",
-      "nature_basis": "path_blog"
+      "method": "discovered"
     }
   ],
-  "fetched": "2026-10-03T12:15:37Z",
+  "fetched": "2026-10-10T13:15:00Z",
   "post_count": 5,
   "feed_nature": "vendor-blog",
   "feed_nature_basis": "path_blog",
