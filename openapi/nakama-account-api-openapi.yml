@@ -136,51 +136,6 @@ components:
           additionalProperties:
             type: string
           description: Extra information stored on the session.
-    Users:
-      type: object
-      properties:
-        users:
-          type: array
-          items:
-            $ref: '#/components/schemas/User'
-    Account:
-      type: object
-      description: A user's full account, including linked identities and wallet.
-      properties:
-        user:
-          $ref: '#/components/schemas/User'
-        wallet:
-          type: string
-          description: The user's wallet data, as a JSON-encoded string.
-        email:
-          type: string
-        devices:
-          type: array
-          items:
-            $ref: '#/components/schemas/AccountDevice'
-        custom_id:
-          type: string
-        verify_time:
-          type: string
-          format: date-time
-        disable_time:
-          type: string
-          format: date-time
-    UpdateAccountRequest:
-      type: object
-      properties:
-        username:
-          type: string
-        display_name:
-          type: string
-        avatar_url:
-          type: string
-        lang_tag:
-          type: string
-        location:
-          type: string
-        timezone:
-          type: string
     User:
       type: object
       description: A user in the system.
@@ -221,6 +176,51 @@ components:
           type: string
           format: date-time
         update_time:
+          type: string
+          format: date-time
+    Users:
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+    UpdateAccountRequest:
+      type: object
+      properties:
+        username:
+          type: string
+        display_name:
+          type: string
+        avatar_url:
+          type: string
+        lang_tag:
+          type: string
+        location:
+          type: string
+        timezone:
+          type: string
+    Account:
+      type: object
+      description: A user's full account, including linked identities and wallet.
+      properties:
+        user:
+          $ref: '#/components/schemas/User'
+        wallet:
+          type: string
+          description: The user's wallet data, as a JSON-encoded string.
+        email:
+          type: string
+        devices:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountDevice'
+        custom_id:
+          type: string
+        verify_time:
+          type: string
+          format: date-time
+        disable_time:
           type: string
           format: date-time
   securitySchemes:

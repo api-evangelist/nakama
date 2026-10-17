@@ -110,6 +110,15 @@ components:
         update_time:
           type: string
           format: date-time
+    FriendList:
+      type: object
+      properties:
+        friends:
+          type: array
+          items:
+            $ref: '#/components/schemas/Friend'
+        cursor:
+          type: string
     User:
       type: object
       description: A user in the system.
@@ -152,15 +161,6 @@ components:
         update_time:
           type: string
           format: date-time
-    FriendList:
-      type: object
-      properties:
-        friends:
-          type: array
-          items:
-            $ref: '#/components/schemas/Friend'
-        cursor:
-          type: string
   securitySchemes:
     BasicAuth:
       type: http
