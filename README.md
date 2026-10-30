@@ -1,4 +1,4 @@
-# Nakama (nakama)
+# Nakama
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,226 +66,152 @@
 
 Nakama by Heroic Labs is an open-source (Apache-2.0) game and app backend server providing user accounts and authentication, social features (friends, groups, chat), collaborative storage, realtime multiplayer and authoritative matches, matchmaking, leaderboards and tournaments, notifications, and a server runtime with custom RPCs in Go, TypeScript/JavaScript, and Lua. Nakama exposes a gRPC-gateway-generated REST API plus a realtime WebSocket socket API, and is available self-hosted or as the managed Heroic Cloud.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/nakama/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/nakama/refs/heads/main/apis.yml)
+**Areas:** Gaming · Game Backend · Backend · Real-Time · Multiplayer · Matchmaking · Leaderboards · Social · Open Source
 
-## Tags
+## Nakama on APIs.io
 
-- Gaming
-- Game Backend
-- Backend
-- Realtime
-- Multiplayer
-- Matchmaking
-- Leaderboards
-- Social
-- Open Source
+Everything profiled for Nakama is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/nakama/](https://apis.io/providers/nakama/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (11)
 
-- **Created:** 2026-07-01
-- **Modified:** 2026-07-01
+- [Nakama Realtime Socket API](https://apis.io/apis/nakama/nakama-realtime-api/) — Persistent WebSocket connection carrying realtime features - status presence, realtime chat channels, relayed and authoritative multiplayer matches,…
+- [Nakama Console API](https://apis.io/apis/nakama/nakama-console-api/) — Administrative API behind the Nakama Developer Console for managing users, storage, leaderboards, matches, runtime configuration, and server status. It is…
+- [Nakama Account API](https://apis.io/apis/nakama/nakama-account-api/) — Read, update, and delete the current account and link identities.
+- [Nakama Authentication API](https://apis.io/apis/nakama/nakama-authentication-api/) — Authenticate users and issue or refresh session tokens.
+- [Nakama Friends API](https://apis.io/apis/nakama/nakama-friends-api/) — Manage the friend graph.
+- [Nakama Groups API](https://apis.io/apis/nakama/nakama-groups-api/) — Create and manage groups (clans) and their members.
+- [Nakama Leaderboards API](https://apis.io/apis/nakama/nakama-leaderboards-api/) — Write and list leaderboard records.
+- [Nakama Notifications API](https://apis.io/apis/nakama/nakama-notifications-api/) — List and delete in-app notifications.
+- [Nakama RPC API](https://apis.io/apis/nakama/nakama-rpc-api/) — Call custom runtime functions.
+- [Nakama Storage API](https://apis.io/apis/nakama/nakama-storage-api/) — Read, write, list, and delete storage objects.
+- [Nakama Tournaments API](https://apis.io/apis/nakama/nakama-tournaments-api/) — List, join, and submit to tournaments.
 
-## APIs
+### Published properties
 
-### Nakama Authentication API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Authenticates players and issues session tokens. Supports device ID, email/password, username, custom ID, Apple, Google, Facebook, Facebook Instant Games, Game Center, Steam, and refresh-token flows. Server key HTTP Basic auth guards authentication endpoints; a JWT session token authorizes all other calls.
+#### AsyncAPI (1)
 
-- **Human URL:** [https://heroiclabs.com/docs/nakama/concepts/authentication/](https://heroiclabs.com/docs/nakama/concepts/authentication/)
-- **Base URL:** `http://127.0.0.1:7350/v2`
+Event-driven and webhook contracts.
 
-#### Tags
+- [Nakama Realtime Socket API (WebSocket)](https://apis.io/asyncapis/nakama/nakama-asyncapi/)
 
-- Authentication
-- Accounts
-- Sessions
-- OAuth
+#### Event channels (1)
 
-#### Properties
+Individual events and webhooks the provider emits.
 
-- [Documentation](https://heroiclabs.com/docs/nakama/concepts/authentication/)
-- [API Reference](https://heroiclabs.com/docs/nakama/api/)
-- [OpenAPI](openapi/nakama-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/nakama.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nakama.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [/ws](https://apis.io/channels/nakama/ws/)
 
-### Nakama Account API
+#### Agentic access (1)
 
-Reads and updates the authenticated user's account, fetches other user profiles, deletes the account, and links or unlinks external identity providers (device, email, Apple, Google, Facebook, Game Center, Steam, custom) to a single account.
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- **Human URL:** [https://heroiclabs.com/docs/nakama/concepts/user-accounts/](https://heroiclabs.com/docs/nakama/concepts/user-accounts/)
-- **Base URL:** `http://127.0.0.1:7350/v2`
+- [Nakama Agentic Access](https://apis.io/agentic-access/nakama/nakama-agentic-access/)
 
-#### Tags
+#### Collections (10)
 
-- Accounts
-- Users
-- Profile
-- Linking
+Postman and Open Collection request collections.
 
-#### Properties
+- [Nakama API](https://apis.io/collections/nakama/open-nakama/)
+- [Nakama Account API](https://apis.io/collections/nakama/open-nakama-account-api/)
+- [Nakama Account Authentication API](https://apis.io/collections/nakama/open-nakama-authentication-api/)
+- [Nakama Account Friends API](https://apis.io/collections/nakama/open-nakama-friends-api/)
+- [Nakama Account Groups API](https://apis.io/collections/nakama/open-nakama-groups-api/)
+- [Nakama Account Leaderboards API](https://apis.io/collections/nakama/open-nakama-leaderboards-api/)
+- [Nakama Account Notifications API](https://apis.io/collections/nakama/open-nakama-notifications-api/)
+- [Nakama Account RPC API](https://apis.io/collections/nakama/open-nakama-rpc-api/)
+- [Nakama Account Storage API](https://apis.io/collections/nakama/open-nakama-storage-api/)
+- [Nakama Account Tournaments API](https://apis.io/collections/nakama/open-nakama-tournaments-api/)
 
-- [Documentation](https://heroiclabs.com/docs/nakama/concepts/user-accounts/)
-- [OpenAPI](openapi/nakama-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/nakama.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nakama.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Governance rules (1)
 
-### Nakama Friends and Groups API
+Spectral rulesets for the provider's contracts.
 
-Manages the social graph - add, list, delete, and block friends; import friends from Facebook and Steam; create, update, list, join, and leave groups (clans); manage group membership, promotions, demotions, and bans.
+- [Nakama — asyncapi rules](https://apis.io/rules/nakama/nakama-asyncapi-spectral-rules/)
 
-- **Human URL:** [https://heroiclabs.com/docs/nakama/concepts/friends/](https://heroiclabs.com/docs/nakama/concepts/friends/)
-- **Base URL:** `http://127.0.0.1:7350/v2`
+#### Security (2)
 
-#### Tags
+Authentication, trust centre, and vulnerability disclosure.
 
-- Social
-- Friends
-- Groups
-- Clans
+- [Nakama Authentication](https://apis.io/security/nakama/nakama-authentication/)
+- [Nakama Domain Security](https://apis.io/security/nakama/nakama-domain-security/)
 
-#### Properties
+#### Plans and pricing (1)
 
-- [Documentation](https://heroiclabs.com/docs/nakama/concepts/friends/)
-- [Documentation](https://heroiclabs.com/docs/nakama/concepts/groups-clans/)
-- [OpenAPI](openapi/nakama-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/nakama.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nakama.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Published plans, tiers and prices.
 
-### Nakama Storage API
+- [Nakama Plans Pricing](https://apis.io/plans/nakama/nakama-plans-pricing/)
 
-Reads, writes, lists, and deletes JSON storage objects organized into collections and keyed per user, with per-object owner and public read/write permissions and optimistic-concurrency version checks. Backs save games, inventories, and shared app state.
+#### Rate limits (1)
 
-- **Human URL:** [https://heroiclabs.com/docs/nakama/concepts/collections/](https://heroiclabs.com/docs/nakama/concepts/collections/)
-- **Base URL:** `http://127.0.0.1:7350/v2`
+Published request limits.
 
-#### Tags
+- [Nakama Rate Limits](https://apis.io/rate-limits/nakama/nakama-rate-limits/)
 
-- Storage
-- Objects
-- Save Games
-- Persistence
+#### FinOps (1)
 
-#### Properties
+What the API costs to run, by operation.
 
-- [Documentation](https://heroiclabs.com/docs/nakama/concepts/collections/)
-- [OpenAPI](openapi/nakama-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/nakama.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nakama.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Nakama Finops](https://apis.io/finops/nakama/nakama-finops/)
 
-### Nakama Leaderboards and Tournaments API
+## Where to find this API
 
-Writes and lists leaderboard records (including records around an owner or filtered to friends), and lists, joins, and submits scores to recurring or one-off tournaments with configurable reset schedules, categories, and reward handling.
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-- **Human URL:** [https://heroiclabs.com/docs/nakama/concepts/leaderboards/](https://heroiclabs.com/docs/nakama/concepts/leaderboards/)
-- **Base URL:** `http://127.0.0.1:7350/v2`
-
-#### Tags
-
-- Leaderboards
-- Tournaments
-- Scores
-- Ranking
-
-#### Properties
-
-- [Documentation](https://heroiclabs.com/docs/nakama/concepts/leaderboards/)
-- [Documentation](https://heroiclabs.com/docs/nakama/concepts/tournaments/)
-- [OpenAPI](openapi/nakama-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/nakama.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nakama.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Nakama Notifications API
-
-Lists and deletes a user's in-app notifications with cursor-based pagination. Notifications are delivered in realtime over the socket when the user is connected, and persisted for retrieval when they reconnect.
-
-- **Human URL:** [https://heroiclabs.com/docs/nakama/concepts/in-app-notifications/](https://heroiclabs.com/docs/nakama/concepts/in-app-notifications/)
-- **Base URL:** `http://127.0.0.1:7350/v2`
-
-#### Tags
-
-- Notifications
-- Messaging
-- Push
-
-#### Properties
-
-- [Documentation](https://heroiclabs.com/docs/nakama/concepts/in-app-notifications/)
-- [OpenAPI](openapi/nakama-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/nakama.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nakama.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Nakama RPC and Runtime API
-
-Invokes custom server-side functions (RPCs) registered in the Nakama runtime over HTTP GET or POST, callable with a session token or, for server-to-server calls, an HTTP key query parameter. Runtime functions are authored in Go, TypeScript/JavaScript, or Lua.
-
-- **Human URL:** [https://heroiclabs.com/docs/nakama/server-framework/basics/](https://heroiclabs.com/docs/nakama/server-framework/basics/)
-- **Base URL:** `http://127.0.0.1:7350/v2`
-
-#### Tags
-
-- RPC
-- Runtime
-- Custom Logic
-- Serverless
-
-#### Properties
-
-- [Documentation](https://heroiclabs.com/docs/nakama/server-framework/basics/)
-- [Documentation](https://heroiclabs.com/docs/nakama/server-framework/introduction/)
-- [OpenAPI](openapi/nakama-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/nakama.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nakama.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Nakama Realtime Socket API
-
-Persistent WebSocket connection carrying realtime features - status presence, realtime chat channels, relayed and authoritative multiplayer matches, matchmaking, parties, and realtime notification delivery - as envelope messages authenticated with a session token supplied as a query parameter on connect.
-
-- **Human URL:** [https://heroiclabs.com/docs/nakama/concepts/client-relayed-multiplayer/](https://heroiclabs.com/docs/nakama/concepts/client-relayed-multiplayer/)
-- **Base URL:** `ws://127.0.0.1:7350/ws`
-
-#### Tags
-
-- Realtime
-- WebSocket
-- Multiplayer
-- Matchmaking
-- Chat
-
-#### Properties
-
-- [Documentation](https://heroiclabs.com/docs/nakama/concepts/client-relayed-multiplayer/)
-- [Documentation](https://heroiclabs.com/docs/nakama/concepts/matches/)
-- [AsyncAPI](asyncapi/nakama-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
-
-### Nakama Console API
-
-Administrative API behind the Nakama Developer Console for managing users, storage, leaderboards, matches, runtime configuration, and server status. It is an internal operations surface (not published as a stable public client contract) authenticated with console credentials, and is documented here for completeness rather than for third-party client integration.
-
-- **Human URL:** [https://heroiclabs.com/docs/nakama/getting-started/console-overview/](https://heroiclabs.com/docs/nakama/getting-started/console-overview/)
-- **Base URL:** `http://127.0.0.1:7350/v2/console`
-
-#### Tags
-
-- Console
-- Administration
-- Operations
-
-#### Properties
-
-- [Documentation](https://heroiclabs.com/docs/nakama/getting-started/console-overview/)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/heroiclabs)
-- [LinkedIn](https://www.linkedin.com/company/heroic-labs)
 - [Website](https://heroiclabs.com/)
 - [Documentation](https://heroiclabs.com/docs/)
-- [Plans](plans/nakama-plans-pricing.yml)
-- [Rate Limits](rate-limits/nakama-rate-limits.yml)
-- [Fin Ops](finops/nakama-finops.yml)
+- [Blog](https://heroiclabs.com/blog/)
+- [GitHub](https://github.com/heroiclabs)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 32.9** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 52.5 |
+| Contract governance | 11.4 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 31.0 |
+| Access clarity | 7.9 |
+
+**Agent readiness 19.0** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | derived (partial credit) |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 11.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/nakama/](https://apis.io/providers/nakama/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Nakama: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/nakama/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
